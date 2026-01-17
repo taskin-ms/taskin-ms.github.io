@@ -82,13 +82,16 @@ body {
     min-height: 60vh;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     background-color: var(--bg-color);
     padding: 6rem 2rem 4rem;
 }
 
 .hero-content {
-    max-width: 800px;
+    max-width: 1200px;
+    width: 100%;
+    margin-left: 0;
+    padding-left: 2rem;
     display: flex;
     align-items: center;
     gap: 3rem;
