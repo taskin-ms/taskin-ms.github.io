@@ -91,11 +91,13 @@ body {
     max-width: 1200px;
     width: 100%;
     padding-left: 2rem;
-    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
 }
 
 .profile-image {
-    margin-top: 2rem;
+    flex-shrink: 0;
 }
 
 .profile-photo {
@@ -104,6 +106,10 @@ body {
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     object-fit: cover;
+}
+
+.hero-text {
+    text-align: left;
 }
 
 .hero h1 {
@@ -305,7 +311,11 @@ footer {
     }
 
     .hero-content {
+        flex-direction: column;
         padding-left: 1rem;
+    }
+
+    .hero-text {
         text-align: center;
     }
 
