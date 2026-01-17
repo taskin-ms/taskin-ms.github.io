@@ -84,7 +84,7 @@ body {
     align-items: center;
     justify-content: flex-start;
     background-color: var(--bg-color);
-    padding: 6rem 2rem 4rem 2rem;
+    padding: 5rem 2rem 2rem 2rem;
 }
 
 .hero-content {
@@ -134,7 +134,7 @@ body {
 
 /* Sections */
 .section {
-    padding: 3rem 0;
+    padding: 1rem 0;
 }
 
 .section-title {
@@ -218,13 +218,13 @@ body {
 .equal-contribution {
     font-size: 0.95rem;
     color: var(--text-light);
-    margin-bottom: 3rem;
+    margin-bottom: 1.5rem;
 }
 
 .publication-list {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 1.5rem;
 }
 
 .publication-item {
