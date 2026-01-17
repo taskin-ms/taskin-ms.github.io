@@ -174,16 +174,17 @@ body {
     font-weight: 700;
     color: var(--text-color);
     margin-bottom: 1.5rem;
-    padding-left: 10rem;
+    padding-left: 8rem;
 }
 
 .about-content {
-    max-width: 800px;
+    max-width: none;
     font-size: 1.125rem;
     line-height: 1.8;
     color: var(--text-light);
     text-align: left;
-    padding-left: 10rem;
+    padding-left: 8rem;
+    padding-right: 8rem;
 }
 
 .about-content p {
