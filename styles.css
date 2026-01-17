@@ -79,52 +79,61 @@ body {
 
 /* Hero Section */
 .hero {
-    min-height: 100vh;
+    min-height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    text-align: center;
-    padding: 2rem;
+    background-color: var(--bg-color);
+    padding: 6rem 2rem 4rem;
 }
 
 .hero-content {
     max-width: 800px;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.profile-image {
+    flex-shrink: 0;
+}
+
+.profile-placeholder {
+    width: 200px;
+    height: 200px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.hero-content > div:last-child {
+    text-align: left;
 }
 
 .hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
     animation: fadeInUp 1s ease;
 }
 
-.highlight {
-    color: #fbbf24;
-}
-
 .tagline {
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
-    opacity: 0.9;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-light);
     animation: fadeInUp 1s ease 0.2s both;
 }
 
-.cta-button {
-    display: inline-block;
-    padding: 1rem 2rem;
-    background-color: white;
+.email {
+    font-size: 1.1rem;
     color: var(--primary-color);
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: 600;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    animation: fadeInUp 1s ease 0.4s both;
-}
-
-.cta-button:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 1s ease 0.3s both;
 }
 
 /* Sections */
@@ -305,12 +314,26 @@ footer {
         gap: 1rem;
     }
 
+    .hero-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content > div:last-child {
+        text-align: center;
+    }
+
+    .profile-placeholder {
+        width: 160px;
+        height: 160px;
+    }
+
     .hero h1 {
         font-size: 2.5rem;
     }
 
     .tagline {
-        font-size: 1.25rem;
+        font-size: 1.1rem;
     }
 
     .section-title {
@@ -335,6 +358,11 @@ footer {
     .nav-links {
         flex-wrap: wrap;
         justify-content: center;
+    }
+
+    .profile-placeholder {
+        width: 140px;
+        height: 140px;
     }
 
     .hero h1 {
