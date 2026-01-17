@@ -239,7 +239,7 @@ body {
     height: 180px;
     border-radius: 8px;
     overflow: hidden;
-    background-color: #f3f4f6;
+    background-color: #ffffff;
     border: 1px solid var(--border-color);
 }
 
@@ -299,7 +299,7 @@ body {
 .pub-link:hover {
     border-color: var(--primary-color);
     color: var(--primary-color);
-    background-color: #f9fafb;
+    background-color: #ffffff;
 }
 
 /* Contact Section */
@@ -347,7 +347,7 @@ body {
 .contact-link:hover {
     border-color: var(--primary-color);
     color: var(--primary-color);
-    background-color: #f9fafb;
+    background-color: #ffffff;
 }
 
 /* Footer */
