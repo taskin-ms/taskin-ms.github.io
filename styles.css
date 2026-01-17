@@ -91,14 +91,12 @@ body {
     max-width: 1200px;
     width: 100%;
     margin-left: 0;
-    padding-left: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 3rem;
+    padding-left: 4rem;
+    text-align: left;
 }
 
 .profile-image {
-    flex-shrink: 0;
+    margin-top: 2rem;
 }
 
 .profile-photo {
@@ -107,10 +105,6 @@ body {
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     object-fit: cover;
-}
-
-.hero-content > div:last-child {
-    text-align: left;
 }
 
 .hero h1 {
