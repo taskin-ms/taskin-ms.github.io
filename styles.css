@@ -20,10 +20,14 @@ html {
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: 'IBM Plex Serif', Georgia, serif;
     line-height: 1.6;
     color: var(--text-color);
     background-color: var(--bg-color);
+}
+
+h1, h2, h3, h4, h5, h6, .logo, .nav-links {
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .container {
