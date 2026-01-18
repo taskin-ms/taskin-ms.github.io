@@ -354,6 +354,108 @@ h1, h2, h3, h4, h5, h6, .logo, .nav-links {
     background-color: #ffffff;
 }
 
+/* Resume Section */
+.resume-section {
+    background-color: var(--bg-alt);
+}
+
+.resume-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 8rem;
+}
+
+.resume-header {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.resume-intro {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+}
+
+.resume-link {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.resume-link:hover {
+    color: var(--secondary-color);
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    padding-left: 2rem;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background-color: #d1d5db;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2.5rem;
+    display: flex;
+    gap: 2rem;
+}
+
+.timeline-date {
+    flex-shrink: 0;
+    width: 150px;
+    font-size: 0.75rem;
+    color: #9ca3af;
+    text-align: right;
+    padding-top: 0.25rem;
+}
+
+.timeline-content {
+    flex: 1;
+    position: relative;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -2.5rem;
+    top: 0.25rem;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: white;
+    border: 3px solid var(--primary-color);
+    box-shadow: 0 0 0 3px white;
+}
+
+.timeline-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.timeline-role {
+    font-size: 0.85rem;
+    color: var(--text-color);
+    margin-bottom: 0.25rem;
+}
+
+.timeline-detail {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-bottom: 0.15rem;
+}
+
 /* Footer */
 footer {
     background-color: var(--text-color);
@@ -441,6 +543,20 @@ footer {
 
     .contact-header {
         font-size: 1.75rem;
+    }
+
+    .resume-container {
+        padding: 0 2rem;
+    }
+
+    .timeline-item {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .timeline-date {
+        width: 100%;
+        text-align: left;
     }
 }
 
