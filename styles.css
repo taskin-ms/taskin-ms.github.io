@@ -6,8 +6,8 @@
 }
 
 :root {
-    --primary-color: #ec4899;
-    --secondary-color: #f472b6;
+    --primary-color: #ff1493;
+    --secondary-color: #ff69b4;
     --text-color: #1f2937;
     --text-light: #6b7280;
     --bg-color: #ffffff;
@@ -249,7 +249,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+    background: linear-gradient(135deg, #ffe0f0 0%, #ffb3d9 100%);
     color: var(--text-light);
     font-size: 1.1rem;
 }
