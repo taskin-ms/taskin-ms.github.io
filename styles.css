@@ -89,6 +89,7 @@ h1, h2, h3, h4, h5, h6, .logo, .nav-links {
     justify-content: flex-start;
     background-color: var(--bg-color);
     padding: 5rem 2rem 1rem 2rem;
+    position: relative;
 }
 
 .hero-content {
@@ -139,11 +140,31 @@ h1, h2, h3, h4, h5, h6, .logo, .nav-links {
 /* Sections */
 .section {
     padding: 1rem 0;
-    border-bottom: 1px solid var(--border-color);
+    position: relative;
 }
 
-.section:last-of-type {
-    border-bottom: none;
+.section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 8rem;
+    right: 8rem;
+    height: 1px;
+    background-color: var(--border-color);
+}
+
+.section:last-of-type::after {
+    display: none;
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 8rem;
+    right: 8rem;
+    height: 1px;
+    background-color: var(--border-color);
 }
 
 .section-title {
@@ -628,6 +649,13 @@ footer {
 
     .timeline__item {
         margin-bottom: 3rem;
+    }
+
+    /* Divider lines - mobile */
+    .section::after,
+    .hero::after {
+        left: 2rem;
+        right: 2rem;
     }
 }
 
