@@ -354,6 +354,150 @@ h1, h2, h3, h4, h5, h6, .logo, .nav-links {
     background-color: #ffffff;
 }
 
+/* Resume Section */
+.resume-section {
+    background-color: var(--bg-alt);
+}
+
+.resume-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 8rem;
+}
+
+.resume-header {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 3rem;
+}
+
+/* Timeline */
+.timeline {
+    position: relative;
+    padding: 2rem 0;
+}
+
+/* Vertical center line */
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(to bottom,
+        transparent,
+        var(--primary-color) 5%,
+        var(--primary-color) 95%,
+        transparent
+    );
+    transform: translateX(-50%);
+}
+
+.timeline__item {
+    position: relative;
+    margin-bottom: 4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Date pill */
+.timeline__date-pill {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -2rem;
+    background-color: white;
+    border: 2px solid var(--primary-color);
+    border-radius: 20px;
+    padding: 0.4rem 1.2rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(199, 21, 133, 0.15);
+    z-index: 2;
+}
+
+/* Circular dot marker */
+.timeline__dot {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 16px;
+    background-color: white;
+    border: 4px solid var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px white, 0 0 0 6px rgba(199, 21, 133, 0.2);
+    z-index: 3;
+    transition: all 0.3s ease;
+}
+
+.timeline__item:hover .timeline__dot {
+    transform: translate(-50%, -50%) scale(1.2);
+    box-shadow: 0 0 0 4px white, 0 0 0 8px rgba(199, 21, 133, 0.3);
+}
+
+/* Timeline card */
+.timeline__card {
+    background: white;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    width: 45%;
+    max-width: 450px;
+}
+
+.timeline__card:hover {
+    box-shadow: 0 4px 16px rgba(199, 21, 133, 0.15);
+    transform: translateY(-2px);
+}
+
+.timeline__card:focus-within {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Alternating left/right layout */
+.timeline__item--left .timeline__card {
+    margin-right: auto;
+    margin-left: 0;
+}
+
+.timeline__item--right .timeline__card {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+.timeline__title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    line-height: 1.3;
+}
+
+.timeline__company {
+    font-size: 0.85rem;
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.timeline__description {
+    font-size: 0.8rem;
+    color: var(--text-light);
+    line-height: 1.5;
+    margin: 0;
+}
+
 /* Footer */
 footer {
     background-color: var(--text-color);
@@ -441,6 +585,44 @@ footer {
 
     .contact-header {
         font-size: 1.75rem;
+    }
+
+    /* Resume Timeline - Mobile */
+    .resume-container {
+        padding: 0 2rem;
+    }
+
+    .timeline::before {
+        left: 1.5rem;
+    }
+
+    .timeline__date-pill {
+        left: 1.5rem;
+        transform: translateX(0);
+        top: -2.5rem;
+        font-size: 0.7rem;
+        padding: 0.3rem 1rem;
+    }
+
+    .timeline__dot {
+        left: 1.5rem;
+        transform: translate(0, -50%);
+    }
+
+    .timeline__item:hover .timeline__dot {
+        transform: translate(0, -50%) scale(1.2);
+    }
+
+    .timeline__item--left .timeline__card,
+    .timeline__item--right .timeline__card {
+        width: calc(100% - 4rem);
+        max-width: none;
+        margin-left: 4rem;
+        margin-right: 0;
+    }
+
+    .timeline__item {
+        margin-bottom: 3rem;
     }
 }
 
