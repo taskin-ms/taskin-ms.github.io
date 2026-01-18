@@ -3,16 +3,315 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PhD Project - Taskin Mehereen">
-    <title>PhD Project - Taskin Mehereen</title>
+    <meta name="description" content="Physics-Aware Learning from High-Order CFD - PhD Research Project by Taskin Mehereen">
+    <title>Physics-Aware Learning from High-Order CFD - Taskin Mehereen</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:wght@400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background-color: #ffffff;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Navigation - matches main site */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #c71585;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #1f2937;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #c71585;
+        }
+
+        /* Main Content */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 7rem 2rem 4rem 2rem;
+        }
+
+        /* Project Header */
+        .project-header {
+            margin-bottom: 3rem;
+        }
+
+        .project-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .project-status {
+            font-size: 0.95rem;
+            color: #6b7280;
+            font-weight: 400;
+        }
+
+        .project-status::before {
+            content: "";
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background-color: #f59e0b;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        /* Overview Section */
+        .overview {
+            margin-bottom: 3.5rem;
+        }
+
+        .section-heading {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 1rem;
+        }
+
+        .overview-text {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #374151;
+            text-align: justify;
+        }
+
+        /* Concept Diagram Section */
+        .diagram-section {
+            margin-bottom: 3.5rem;
+        }
+
+        .diagram-container {
+            margin: 2rem 0;
+            padding: 2.5rem 1.5rem;
+            background-color: #fafafa;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+
+        /* Vertical flow diagram */
+        .flow-diagram {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .flow-box {
+            width: 100%;
+            max-width: 600px;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 2px solid;
+            background-color: #ffffff;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .flow-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Box colors - physics to learning gradient */
+        .box-physics {
+            border-color: #93c5fd;
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%);
+        }
+
+        .box-representation {
+            border-color: #7dd3fc;
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+        }
+
+        .box-learning {
+            border-color: #86efac;
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        }
+
+        .box-surrogate {
+            border-color: #6ee7b7;
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+        }
+
+        .box-title {
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 0.75rem;
+        }
+
+        .box-content {
+            font-size: 0.9rem;
+            color: #4b5563;
+            line-height: 1.6;
+        }
+
+        .box-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .box-content li {
+            margin-bottom: 0.35rem;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .box-content li::before {
+            content: "•";
+            position: absolute;
+            left: 0.25rem;
+            color: #9ca3af;
+        }
+
+        /* Arrow between boxes */
+        .flow-arrow {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #9ca3af;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        .arrow-symbol {
+            font-size: 1.5rem;
+            color: #d1d5db;
+            margin-bottom: 0.25rem;
+        }
+
+        /* Annotation bar */
+        .annotation-bar {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 2px dashed #d1d5db;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        /* Figure caption */
+        .figure-caption {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #6b7280;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* Availability Section */
+        .availability {
+            margin-top: 3.5rem;
+            padding: 1.5rem;
+            background-color: #f9fafb;
+            border-left: 4px solid #d1d5db;
+            border-radius: 4px;
+        }
+
+        .availability-heading {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+
+        .availability-text {
+            font-size: 0.9rem;
+            color: #4b5563;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f2937;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 4rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            main {
+                padding: 6rem 1.5rem 3rem 1.5rem;
+            }
+
+            .project-title {
+                font-size: 1.5rem;
+            }
+
+            .diagram-container {
+                padding: 1.5rem 1rem;
+            }
+
+            .flow-box {
+                padding: 1.25rem;
+            }
+
+            .nav-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav id="navbar">
+    <nav>
         <div class="nav-content">
             <a href="../index.html" class="logo">Taskin Mehereen</a>
             <ul class="nav-links">
@@ -23,42 +322,115 @@
         </div>
     </nav>
 
-    <!-- Project Content -->
-    <section class="hero" style="min-height: auto; padding: 7rem 2rem 2rem 2rem;">
-        <div class="container">
-            <h1 style="font-size: 2rem; margin-bottom: 1rem;">PhD Project</h1>
-            <p style="font-size: 0.9rem; color: var(--text-light); margin-bottom: 2rem;">
-                Research in computational physics and machine learning
-            </p>
-
-            <div class="about-content">
-                <h2 style="font-size: 1.2rem; margin-bottom: 1rem; color: var(--text-color);">Project Overview</h2>
-                <p>
-                    Add your project description here. This page is dedicated to showcasing your ongoing PhD research project,
-                    including methodology, results, publications, and related materials.
-                </p>
-
-                <h2 style="font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem; color: var(--text-color);">Materials</h2>
-                <ul style="list-style: disc; margin-left: 2rem; line-height: 2;">
-                    <li>Research papers</li>
-                    <li>Presentations</li>
-                    <li>Code repositories</li>
-                    <li>Documentation</li>
-                </ul>
-
-                <h2 style="font-size: 1.2rem; margin-top: 2rem; margin-bottom: 1rem; color: var(--text-color);">Updates</h2>
-                <p>
-                    Add project updates and milestones here.
-                </p>
-            </div>
+    <!-- Main Content -->
+    <main>
+        <!-- Project Header -->
+        <div class="project-header">
+            <h1 class="project-title">Physics-Aware Learning from High-Order CFD</h1>
+            <p class="project-status">Ongoing research · Preprint in preparation · Code not publicly available</p>
         </div>
-    </section>
+
+        <!-- Overview Section -->
+        <section class="overview">
+            <h2 class="section-heading">Overview</h2>
+            <p class="overview-text">
+                This research develops a physics-aware machine learning framework for accelerating computational fluid dynamics (CFD) simulations that use high-order numerical methods. Traditional neural surrogate models often treat numerical solutions as generic field data, discarding the structured information embedded in the discretization scheme. Our approach preserves the discretization structure—solution points, local numerical coupling, and boundary adjacency—as learning primitives within a graph-based model. By encoding the geometry, boundary conditions, and solver topology directly into the learning architecture, the resulting surrogate maintains numerical consistency and produces stable, boundary-aware predictions suitable for autoregressive rollouts in complex flow scenarios.
+            </p>
+        </section>
+
+        <!-- Concept Diagram Section -->
+        <section class="diagram-section">
+            <h2 class="section-heading">Conceptual Framework</h2>
+
+            <div class="diagram-container">
+                <div class="flow-diagram">
+                    <!-- Box 1: High-Order CFD Simulation -->
+                    <div class="flow-box box-physics">
+                        <div class="box-title">High-Order CFD Simulation</div>
+                        <div class="box-content">
+                            <ul>
+                                <li>High-order numerical schemes</li>
+                                <li>Solution point representation</li>
+                                <li>Boundary conditions enforced by solver</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flow-arrow">
+                        <div class="arrow-symbol">↓</div>
+                        <div>Numerical discretization structure</div>
+                    </div>
+
+                    <!-- Box 2: Discretization-Aware Representation -->
+                    <div class="flow-box box-representation">
+                        <div class="box-title">Discretization-Aware Representation</div>
+                        <div class="box-content">
+                            <ul>
+                                <li>Solution points as learning primitives</li>
+                                <li>Local numerical coupling</li>
+                                <li>Geometry & boundary adjacency</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flow-arrow">
+                        <div class="arrow-symbol">↓</div>
+                        <div>Graph construction</div>
+                    </div>
+
+                    <!-- Box 3: Graph-Based Learning Model -->
+                    <div class="flow-box box-learning">
+                        <div class="box-title">Graph-Based Learning Model</div>
+                        <div class="box-content">
+                            <ul>
+                                <li>Nodes encode state & geometry</li>
+                                <li>Edges encode locality & coupling</li>
+                                <li>Message passing</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="flow-arrow">
+                        <div class="arrow-symbol">↓</div>
+                        <div>Autoregressive prediction</div>
+                    </div>
+
+                    <!-- Box 4: Physics-Aware Surrogate Model -->
+                    <div class="flow-box box-surrogate">
+                        <div class="box-title">Physics-Aware Surrogate Model</div>
+                        <div class="box-content">
+                            <ul>
+                                <li>Stable rollouts</li>
+                                <li>Boundary-consistent behavior</li>
+                                <li>Efficient inference</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Annotation Bar -->
+                <div class="annotation-bar">
+                    Boundary conditions • Geometry • Numerical consistency
+                </div>
+            </div>
+
+            <p class="figure-caption">
+                Figure 1: Conceptual framework for physics-aware learning from high-order CFD. The approach preserves discretization structure throughout the learning pipeline.
+            </p>
+        </section>
+
+        <!-- Availability Section -->
+        <section class="availability">
+            <h3 class="availability-heading">Availability</h3>
+            <p class="availability-text">
+                This project is ongoing. The code and data are not publicly available at this time. A preprint is in preparation and will be made available upon completion of the research.
+            </p>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2026 Taskin Mehereen. All rights reserved.</p>
     </footer>
-
-    <script src="../script.js"></script>
 </body>
 </html>
