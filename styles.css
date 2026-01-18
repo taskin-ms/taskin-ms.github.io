@@ -6,8 +6,8 @@
 }
 
 :root {
-    --primary-color: #ffb6d9;
-    --secondary-color: #ffc9e3;
+    --primary-color: #d4a5b8;
+    --secondary-color: #e0b5c7;
     --text-color: #1f2937;
     --text-light: #6b7280;
     --bg-color: #ffffff;
@@ -60,7 +60,7 @@ h1, h2, h3, h4, h5, h6, .logo, .nav-links {
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: #ffb6d9;
+    color: #d4a5b8;
     text-decoration: none;
 }
 
@@ -448,7 +448,7 @@ h1, h2, h3, h4, h5, h6, .logo, .nav-links {
     font-weight: 600;
     color: var(--primary-color);
     white-space: nowrap;
-    box-shadow: 0 2px 8px rgba(255, 182, 217, 0.15);
+    box-shadow: 0 2px 8px rgba(212, 165, 184, 0.15);
     z-index: 2;
 }
 
@@ -463,14 +463,14 @@ h1, h2, h3, h4, h5, h6, .logo, .nav-links {
     background-color: white;
     border: 4px solid var(--primary-color);
     border-radius: 50%;
-    box-shadow: 0 0 0 4px white, 0 0 0 6px rgba(255, 182, 217, 0.2);
+    box-shadow: 0 0 0 4px white, 0 0 0 6px rgba(212, 165, 184, 0.2);
     z-index: 3;
     transition: all 0.3s ease;
 }
 
 .timeline__item:hover .timeline__dot {
     transform: translate(-50%, -50%) scale(1.2);
-    box-shadow: 0 0 0 4px white, 0 0 0 8px rgba(255, 182, 217, 0.3);
+    box-shadow: 0 0 0 4px white, 0 0 0 8px rgba(212, 165, 184, 0.3);
 }
 
 /* Timeline card */
@@ -486,7 +486,7 @@ h1, h2, h3, h4, h5, h6, .logo, .nav-links {
 }
 
 .timeline__card:hover {
-    box-shadow: 0 4px 16px rgba(255, 182, 217, 0.15);
+    box-shadow: 0 4px 16px rgba(212, 165, 184, 0.15);
     transform: translateY(-2px);
 }
 
@@ -531,8 +531,8 @@ h1, h2, h3, h4, h5, h6, .logo, .nav-links {
 
 /* Footer */
 footer {
-    background-color: var(--text-color);
-    color: white;
+    background-color: #ffffff;
+    color: var(--text-color);
     text-align: center;
     padding: 2rem;
 }
