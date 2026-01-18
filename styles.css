@@ -228,7 +228,7 @@ h1, h2, h3, h4, h5, h6, .logo, .nav-links {
 .publication-list {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 2.5rem;
 }
 
 .publication-item {
