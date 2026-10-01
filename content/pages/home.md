@@ -3,14 +3,6 @@ layout: layouts/home.njk
 permalink: /index.html
 page_title: Taskin Mehereen | Hypersonic compressible turbulence
 description: "Taskin Mehereen's research fieldbook on hypersonic compressible turbulence: theory, scaling, datasets, and mathematical derivations."
-eyebrow: Mechanical engineering
-headline: |
-  Taskin
-  Mehereen
-focus: |
-  Hypersonic flows.
-  Compressible turbulence.
-button: Explore the HCT fieldbook
 library:
   eyebrow: Resources
   title: |
