@@ -10,11 +10,6 @@ async function scan(dir) {
   }
 }
 await scan(root);
-const library = await readFile(new URL('hct/index.html',root),'utf8');
-const count = (library.match(/data-resource data-topic=/g)||[]).length;
-assert.ok(count > 0,'The bibliography must include resources');
-assert.ok(library.includes(`${count} resources available`),'The resource count must update automatically');
-assert.equal((library.match(/data-library-section/g)||[]).length,5,'Keep the five resource areas');
 for(const page of pages) {
   const html = await readFile(page,'utf8');
   const path = page.href.slice(root.href.length);
@@ -37,4 +32,5 @@ for(const page of pages) {
   }
 }
 assert.ok(!pages.some(p=>p.href.includes('/archive/')),'The decommissioned site must not be published');
-console.log(`Static checks passed: ${pages.length} pages, ${count} resources, five areas, automatic counts, and local links.`);
+for (const file of ['script.js','assets/flow-field.svg']) await assert.rejects(stat(new URL(file,root)), 'Do not publish removed catalog assets');
+console.log(`Static checks passed: ${pages.length} pages, unique IDs, local links, and removed catalog assets.`);

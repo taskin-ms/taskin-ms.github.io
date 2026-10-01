@@ -1,14 +1,12 @@
 import assert from 'node:assert/strict';
-import { markdown } from '../scripts/markdown.mjs';
-import { compareResources } from '../scripts/resources.mjs';
-const records = [
-  {id:'a',topic:'frontier',year:'2019',title:'A',format:'paper'},
-  {id:'b',topic:'frontier',year:'2026',title:'B',format:'paper'},
-  {id:'c',topic:'theory',year:'2026',title:'A',format:'paper'},
-  {id:'d',topic:'theory',year:'2009',title:'Z',format:'book'}
-];
-assert.deepEqual(records.sort(compareResources).map(r=>r.id),['d','c','b','a']);
+import { markdown, guideSections } from '../scripts/markdown.mjs';
 assert.ok(markdown.render('```math\n\\widetilde u_i = \\frac{\\overline{\\rho u_i}}{\\overline\\rho}\n```').includes('<math'));
 assert.ok(!markdown.render('<script>alert(1)</script>').includes('<script>'));
 assert.ok(markdown.render('## Density weighting').includes('id="density-weighting"'));
-console.log('Content checks passed: automatic order, equations, literal HTML, and heading links.');
+assert.ok(markdown.render('Density $\\rho$ is positive.').includes('<math'));
+assert.ok(!markdown.render('An unmatched $ remains.').includes('<math'));
+assert.throws(() => markdown.render('$\\notARealCommand$'), /ParseError/);
+const sections = guideSections('## 01 — Flow\n\nSee [source][s].\n\n### Density\n\n$\\rho$\n\n## References\n\n- Source\n\n[s]: https://example.com');
+assert.deepEqual(sections.map(s => s.id), ['section-01','references']);
+assert.ok(sections[0].html.includes('href="https://example.com"') && sections[0].html.includes('<h3') && sections[0].html.includes('<math'), 'Preserve global citation definitions and subheadings when grouping sections');
+console.log('Content checks passed: inline/display math, malformed math, literal HTML, heading links, and section grouping.');

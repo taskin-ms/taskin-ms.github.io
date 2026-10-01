@@ -1,28 +1,19 @@
 ---
 layout: layouts/base.njk
 ---
-{% from "components/type.njk" import lines %}
-<main id="main">
-  <section class="library-hero wrap">
-    <div class="hero-copy">
-      <p class="eyebrow">{{ eyebrow }}</p><h1>{{ lines(headline) }}<span class="accent-dot">.</span></h1>
-      <p class="hero-description">{{ lines(intro) }}</p>
-      <div class="hero-actions"><a class="button" href="#collection">{{ browse_label }} <span aria-hidden="true">↓</span></a><a class="text-link" href="#start">{{ start_label }} <span aria-hidden="true">↗</span></a></div>
-    </div>
-    {% set figure_class = "library-figure" %}{% include "components/figure.njk" %}
-  </section>
-  <nav class="topic-index wrap" aria-label="Fieldbook sections">{% for area in areas %}<a href="#{{ area.id }}"><span class="mono">0{{ loop.index }}</span>{{ area.short_title }}<span aria-hidden="true">↗</span></a>{% endfor %}</nav>
-  <section class="start-section wrap" id="start" aria-labelledby="start-title">
-    <div class="start-copy"><p class="eyebrow">{{ start.eyebrow }}</p><h2 id="start-title">{{ lines(start.title) }}</h2><p>{{ start.intro }}</p><a class="text-link" href="{{ start.url }}">{{ start.button }} <span aria-hidden="true">→</span></a></div>
-    <ol class="reading-path">{% for step in reading_path %}<li><span class="mono">0{{ loop.index }}</span><div><h3>{{ step.title }}</h3><p>{{ step.text | inlineMarkdown | safe }}</p></div></li>{% endfor %}</ol>
-  </section>
-  <section class="collection wrap" id="collection" aria-labelledby="collection-title">
-    <div class="collection-heading"><div><p class="eyebrow">{{ collection.eyebrow }}</p><h2 id="collection-title">{{ collection.title }}</h2></div><button class="presentation-toggle" type="button" data-presentation aria-pressed="false" hidden><span class="projection-icon" aria-hidden="true">▣</span><span data-mode-label>Presentation mode</span></button></div>
-    <p class="collection-intro">{{ collection.intro }}</p>
-    {% include "components/library-controls.njk" %}
-    <div id="resource-library" data-library>{% include "components/resources.njk" %}</div>
-    <div class="empty-state" data-empty hidden><h3>No matching resources.</h3><p>Try fewer search terms, or reset the area and format.</p><button class="button" type="button" data-reset>Show all resources <span aria-hidden="true">→</span></button></div>
-    <p class="collection-note">{{ collection.note }}</p>
-  </section>
-  <section class="contribute-section wrap"><div><p class="eyebrow">{{ invitation.eyebrow }}</p><h2>{{ lines(invitation.title) }}</h2></div><div>{{ content | safe }}<a class="text-link" href="mailto:{{ site.email }}?subject=HCT%20fieldbook%20suggestion">{{ invitation.button }} <span aria-hidden="true">↗</span></a></div></section>
+{% set sections = page.rawInput | guideSections %}
+<main id="main" class="field-guide wrap">
+  <header class="guide-header"><h1>{{ headline }}</h1><p>{{ intro }}</p></header>
+  <nav class="guide-contents" aria-label="Guide sections">
+    {% for section in sections %}{% if section.number %}<a href="#{{ section.id }}"><span class="mono">{{ section.number }}</span>{{ section_labels[loop.index0] }}</a>{% endif %}{% endfor %}
+  </nav>
+  <article class="guide-body" aria-label="Compressible turbulence field guide">
+    {% for section in sections %}
+    <section class="{% if section.number %}guide-section{% else %}guide-references{% endif %}" id="{{ section.id }}" aria-labelledby="{{ section.id }}-title">
+      <h2 id="{{ section.id }}-title">{% if section.number %}<span class="guide-number mono">{{ section.number }}</span>{% endif %}{{ section.title }}</h2>
+      {{ section.html | safe }}
+      {% if section.number == "02" and collections.publishedNotes.length %}<div class="guide-notes"><h3>Derivations</h3><ul>{% for note in collections.publishedNotes %}<li><a href="{{ note.url }}">{{ note.data.title | replace("\n", " ") }}</a></li>{% endfor %}</ul></div>{% endif %}
+    </section>
+    {% endfor %}
+  </article>
 </main>

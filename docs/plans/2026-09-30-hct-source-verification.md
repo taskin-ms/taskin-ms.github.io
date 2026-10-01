@@ -1,0 +1,25 @@
+# HCT guide source verification
+
+Verified 2026-09-30 against publisher/author manuscripts, official dataset documentation, and publisher-deposited Crossref records. No dataset sizes, grid resolutions, Reynolds-number values, or Mach-number values are published in this revision.
+
+| Source | Primary verification | Use |
+|---|---|---|
+| Gatski & Bonnet (2013), 2nd ed. | [Elsevier](https://shop.elsevier.com/books/compressibility-turbulence-and-high-speed-flow/gatski/978-0-12-397027-5); author names, edition, publication header, and chapter contents | Chapters 1–3 for variables, conservation, averaging; Chapters 5–7 for models, shear layers, shocks |
+| Lele (1994) | [Annual Reviews](https://www.annualreviews.org/content/journals/10.1146/annurev.fl.26.010194.001235) and deposited DOI record | Compressibility effects |
+| Garnier, Adams & Sagaut (2009) | [Springer](https://link.springer.com/book/10.1007/978-90-481-2819-8), governing-equations/dynamics chapters, and deposited book record | LES and unresolved correlations |
+| Mittal & Girimaji (2019) | [APS accepted manuscript](https://link.aps.org/accepted/10.1103/PhysRevFluids.4.042601) and deposited DOI record | Energy equations (3), density-weighted velocity (14), internal-energy variable (16), and mean/fluctuation partition (19); not an ML paper |
+| Donzis & John (2020) | [APS](https://journals.aps.org/prfluids/abstract/10.1103/PhysRevFluids.5.084609), [author-hosted paper](https://tacl.tamu.edu/wp-content/uploads/sites/36/2023/02/DJ2020.pdf), and deposited DOI record | Homogeneous-flow DNS, dilatational scales, qualified scaling claims; not an ML paper |
+| Duraisamy, Iaccarino & Xiao (2019) | [Annual Reviews](https://www.annualreviews.org/content/journals/10.1146/annurev-fluid-010518-040547) and deposited DOI record | Data-assisted modeling, constraints, uncertainty, deployment limitations |
+| Papamoschou & Roshko (1988) | [Cambridge](https://www.cambridge.org/core/journals/journal-of-fluid-mechanics/article/abs/compressible-turbulent-shear-layer-an-experimental-study/8603B210FE5A2550E5C5784F5D8D48A6) and deposited DOI record | Convective Mach number and mixing-layer growth; not a general wake law |
+| Spina, Smits & Robinson (1994) | [Annual Reviews](https://www.annualreviews.org/content/journals/10.1146/annurev.fl.26.010194.001443) and deposited DOI record | Compressible boundary layers |
+| Dussauge & Piponniau (2008) | [Elsevier](https://www.sciencedirect.com/science/article/abs/pii/S0889974608000595) and deposited DOI record | Shock/boundary-layer separation and unsteadiness |
+| Ling, Kurzawski & Templeton (2016) | [Cambridge](https://doi.org/10.1017/jfm.2016.615) and deposited DOI record | Invariant Reynolds-stress learning |
+| Brunton, Noack & Koumoutsakos (2020) | [Annual Reviews](https://www.annualreviews.org/content/journals/10.1146/annurev-fluid-010719-060214) and deposited DOI record | ML flow models, reduced representations, limits |
+| Kovachki et al. (2023) | [JMLR](https://www.jmlr.org/papers/v24/21-1524.html) | Verified seven-author list, volume/article/pages; operator mappings, not solved extrapolation |
+| JHTDB | [Portal](https://turbulence.idies.jhu.edu/home), [datasets](https://turbulence.pha.jhu.edu/datasets.aspx), [channel documentation](https://turbulence.pha.jhu.edu/Channel_Flow.aspx), and [access](https://turbulence.idies.jhu.edu/database) | Many canonical datasets are incompressible baselines |
+| BLASTNet | [Project](https://blastnet.github.io/), [case](https://blastnet.github.io/compressible_inert_ch4o2_hit), [metadata](https://blastnet.github.io/assets/json/chung2022_info.json), [Kaggle](https://www.kaggle.com/datasets/waitongchung/inert-ch4o2-hit-dns) | Verified UX/UY/UZ, pressure, temperature, density, YO2/YCH4, non-reacting case, periodic boundaries; no local file paths copied |
+| Additional DNS | [Turbulence Modeling Resource](https://tmbwg.github.io/turbmodels/Other_DNS_Data/supersonic_hypersonic_flatplate.html), [Computational Turbulence Laboratory](https://larsson.umd.edu/data/) | Public statistics/profiles, distinct from full instantaneous fields |
+
+All 24 external guide URLs were requested. Twenty returned HTTP 200; four Annual Reviews DOI redirects rejected the automated client with HTTP 403. Their official article pages and registered DOI metadata were verified separately; these responses are access restrictions, not missing references. Ten DOI metadata records agree with the displayed titles, authors, dates, volumes, pages/article numbers. The remaining two books/articles use their verified publisher pages.
+
+Notation review: energy `E` and internal energy `e` are per unit mass here; conservative energy density is `rho E`. Conductive flux has sign `-q_j`. Pressure–dilatation has opposite signs in kinetic/internal balances. Vorticity includes stretching, `-theta omega`, positive baroclinic torque, and the curl of viscous acceleration. Favre stress is defined as positive covariance with negative divergence in mean momentum. `varphi` represents square root of internal-energy density for a calorically perfect ideal gas.

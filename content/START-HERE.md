@@ -1,68 +1,50 @@
 # Editing the website
 
-**Change text here, not HTML.** Open a file on GitHub, click the pencil, edit it, and choose **Commit changes** to `main`. The website rebuilds automatically. A successful update normally takes about 1–2 minutes; check [Actions](https://github.com/taskin-ms/taskin-ms.github.io/actions) if it takes longer.
+Open a content file on GitHub, click the pencil, edit, and **Commit changes** to `main`. GitHub Actions rebuilds and publishes the website, normally within 1–2 minutes. No HTML or local software is required.
 
-## Find what you want to change
-
-| Change | File or folder |
+| Change | File |
 |---|---|
-| Homepage text and bio | [pages/home.md](pages/home.md) |
-| Resource-page introduction and reading order | [pages/fieldbook.md](pages/fieldbook.md) |
+| Homepage and bio | [pages/home.md](pages/home.md) |
+| Entire compressible-turbulence guide | [pages/fieldbook.md](pages/fieldbook.md) |
 | Name, email, navigation, footer | [settings/site.yaml](settings/site.yaml) |
-| Add or edit a resource | [resources/](resources/) |
-| Add or edit a research note | [notes/](notes/) |
+| Research notes | [notes/](notes/) |
 
-Text between the opening `---` lines contains labels and details. Text below it is ordinary Markdown. Preserve the labels on the left of `:` and edit the values on the right. Use quotes around values containing `:`. For multi-line text, keep the indentation below `|`.
+## Edit the field guide
 
-## Add a resource
+Text between `---` lines supplies the title, introduction, and five short navigation labels. The body is ordinary Markdown. Keep the five `## 01 — …` through `## 05 — …` headings and the final `## References`. Their numbered headings automatically create the sections and navigation; `###` headings create subsections. The links `#section-01` through `#section-05` remain stable when titles change.
 
-1. Open [the resource example](examples/resource.md), choose **Code** or **Raw**, and copy the full file.
-2. In the appropriate resource folder, choose **Add file → Create new file**. Give it a descriptive name ending in `.md`, such as `new-velocity-transformation.md`.
-3. Fill in the title, authors, source link, and one-sentence summary. Write reading notes below `---`. Set `draft: false` to publish, then commit.
+Edit explanations, add citations, or add a dataset directly in the appropriate section. There is no separate catalog or metadata form. Reference links are defined once at the end of the file:
 
-| Folder | Put these here |
-|---|---|
-| `resources/theory/` | Books and foundational theory |
-| `resources/frontier/` | Scaling, DNS, LES, and machine-learning papers |
-| `resources/data/` | Datasets and access tools |
-| `resources/aero/` | Aerospace studies and research overviews |
-| `resources/math/` | External mathematical references |
+```md
+Pressure–dilatation exchanges kinetic and internal energy ([Mittal & Girimaji, 2019][mg]).
 
-**The website handles grouping, order, numbering, search, and counts.** Theory puts books first. Research frontiers sorts by year, newest first. Ties and other sections sort by title. You never need numbering in filenames or a separate index file.
+[mg]: https://doi.org/10.1103/PhysRevFluids.4.042601
+```
 
-Optional resource details: `year`, `format`, `venue`, `access`, `label`, and `keywords`. Formats: `book`, `paper`, `preprint`, `dataset`, `reference`, `note`. If you omit format, the data folder uses `dataset`; other folders use `reference`. Add keywords as a list, for example `keywords: ["Favre", "wall cooling"]`.
+Verify bibliographic and technical claims against the original source before publishing. Inline equations use `$…$`; display equations use a fenced `math` block:
 
-Keep existing filenames when editing: their names form stable link anchors. To move a resource to another area, change its folder. To remove one, delete its file. Use `draft: true` to keep a resource out of the public library while you work on it. Draft content remains readable in this public GitHub repository.
+````md
+Density $\rho$ evolves through mass conservation.
+
+```math
+\partial_t\rho+\partial_j(\rho u_j)=0
+```
+````
 
 ## Add a research note
 
-Copy [note.md](examples/note.md) into `notes/` with a new filename. Fill in `title` and `intro`; write the body below `---`. Set `draft: false` when ready.
+Copy [note.md](examples/note.md) into `notes/` with a descriptive filename. Fill in `title` and `intro`, write the body, and set `draft: false` to publish. Notes automatically appear alphabetically under **Derivations** in Section 02. Their headings generate a contents menu. `my-derivation.md` publishes at `/hct/notes/my-derivation.html`.
 
-The note appears in **Mathematical derivations automatically**. Headings become its contents menu. A file named `my-derivation.md` publishes at `/hct/notes/my-derivation.html`. Do not create a duplicate resource entry for it.
+Use `.md` for normal notes. For components, copy [note.mdx](examples/note.mdx). Both formats use the same layout; MDX additionally supports `<Equation>`, `<Callout>`, and `<Disclosure>`. These render at build time. Native disclosures work without browser JavaScript; arbitrary React event handlers do not make an MDX component interactive.
 
-Use `.md` for normal notes. Display equations use a fenced `math` block with LaTeX, as shown in the example. No HTML is needed.
-
-For reusable components, copy [note.mdx](examples/note.mdx) instead. Both `.md` and `.mdx` use the same page layout. MDX additionally supports `<Equation>`, `<Callout>`, and `<Disclosure>`; the example shows each one. Components render when the site builds. Browser interactivity uses native controls or maintained client JavaScript; adding arbitrary React event handlers alone does not make a component interactive.
+`draft: true` excludes a note and its link from the website. Draft source is still public in this GitHub repository.
 
 ## Add another page
 
-Copy [page.md](examples/page.md) into `pages/`. Change its title, description, and unique `permalink`. Set `navigation: true` to add it to the header automatically. Keep navigation short so it stays readable on mobile. Use Markdown or MDX for the body.
+Copy [page.md](examples/page.md) into `pages/`. Set the title, description, and a unique `permalink`. `navigation: true` adds it to the header automatically. Markdown and MDX bodies are supported.
 
-## If an edit does not publish
+## Publishing errors and undo
 
-Open the failed [Actions run](https://github.com/taskin-ms/taskin-ms.github.io/actions) and expand **Build** or **Check**. Resource errors name the file and missing field. Fix that file and commit again. The last successful website stays online while a build fails.
+Open the failed [Actions run](https://github.com/taskin-ms/taskin-ms.github.io/actions) and read **Build** or **Check**. Invalid math, broken internal links, and changes to the five-section structure are checked. The previous successful website stays online if a build fails.
 
-For a quick undo, open the file's **History**, copy the previous text, and save it as a new edit. The decommissioned portfolio is preserved separately on `archive/decommissioned-portfolio-2026-09`.
-
-## Markdown basics
-
-```md
-## Heading
-
-A paragraph with **bold text**, *emphasis*, and a [link](https://example.com).
-
-- A list item
-- Another item
-```
-
-Research copy should name the observable, method, conditions, and limitations. Give the reader information they can use; avoid slogans and claims of expertise.
+For undo, open a file's **History**, copy the previous text, and commit it as a new edit. The old portfolio is preserved on `archive/decommissioned-portfolio-2026-09`.
