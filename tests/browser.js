@@ -1,0 +1,74 @@
+async page => {
+  const check = (condition, message) => { if (!condition) throw new Error(message); };
+  const base = 'http://127.0.0.1:4173';
+  const errors = [];
+  page.on('pageerror', error => errors.push(error.message));
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto(`${base}/hct/`);
+  await page.evaluate(() => document.fonts.ready);
+  check(await page.locator('[data-resource]:visible').count() === 17, 'All 17 resources should be visible initially');
+  check(await page.evaluate(() => document.fonts.check('18px Manrope')), 'The local display font must load');
+  await page.locator('[data-topic-filter="data"]').click();
+  check(await page.locator('[data-resource]:visible').count() === 3, 'Data area should show the three datasets');
+  await page.locator('#resource-search').fill('Mach cold');
+  check(await page.locator('[data-resource]:visible').count() === 2, 'Search terms should combine across dataset metadata');
+  check(new URL(page.url()).searchParams.get('topic') === 'data', 'Area must appear in the shareable URL');
+  await page.reload();
+  check(await page.locator('[data-resource]:visible').count() === 2, 'Reload must preserve area and query');
+  await page.locator('[data-reset]').first().click();
+  await page.locator('[data-topic-filter="frontier"]').click();
+  await page.locator('#resource-format').selectOption('preprint');
+  check(await page.locator('[data-resource]:visible').count() === 1, 'Area and format filters should intersect');
+  await page.locator('#resource-search').fill('no-such-paper-123');
+  check(await page.locator('[data-empty]').isVisible(), 'Empty results must explain how to recover');
+  await page.locator('[data-empty] [data-reset]').click();
+  check(await page.locator('[data-resource]:visible').count() === 17, 'Empty-state reset restores everything');
+  check(await page.locator('#resource-search').evaluate(el => el === document.activeElement), 'Reset restores focus to search');
+  await page.locator('[data-topic-filter="math"]').focus();
+  await page.keyboard.press('Enter');
+  check(await page.locator('[data-resource]:visible').count() === 1, 'Filters must be keyboard operable');
+  await page.getByRole('link', { name: '03 Datasets', exact: true }).click();
+  check(await page.locator('#data').isVisible(), 'Section anchors must reveal a previously filtered-out section');
+  await page.locator('[data-presentation]').click();
+  check(await page.locator('html').evaluate(el => el.classList.contains('presentation')), 'Presentation mode should enable stronger reading styles');
+  await page.reload();
+  check(await page.locator('[data-presentation]').getAttribute('aria-pressed') === 'true', 'Presentation preference persists');
+  await page.locator('[data-presentation]').click();
+  await page.locator('#gatski-bonnet summary').click();
+  check(await page.locator('#gatski-bonnet details').getAttribute('open') !== null, 'Native source notes should expand');
+  await page.screenshot({ path: 'artifacts/hct-library-desktop.png', fullPage: true });
+  const paths = ['/', '/hct/', '/hct/notes/rans-les.html'];
+  for (const path of paths) {
+    for (const width of [1440, 768, 390, 320]) {
+      await page.setViewportSize({ width, height: 1000 });
+      await page.goto(`${base}${path}`);
+      await page.evaluate(() => document.fonts.ready);
+      check(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1), `${path} overflows at ${width}px`);
+      check(await page.locator('h1').isVisible(), `${path} must show its heading at ${width}px`);
+      check(await page.evaluate(() => [...document.images].every(image => image.complete && image.naturalWidth > 0)), `${path} has a broken image`);
+      if (width === 390) await page.screenshot({ path: `artifacts/${path === '/' ? 'home' : path === '/hct/' ? 'hct' : 'note'}-mobile.png`, fullPage: true });
+    }
+  }
+  const noScript = await page.context().browser().newContext({ javaScriptEnabled: false, viewport: { width: 390, height: 844 } });
+  const fallback = await noScript.newPage();
+  await fallback.goto(`${base}/hct/`);
+  check(await fallback.locator('[data-resource]:visible').count() === 17, 'Core bibliography must work without JavaScript');
+  check(!await fallback.locator('[data-library-form]').isVisible(), 'Inert search controls must not show without JavaScript');
+  await fallback.locator('#gatski-bonnet summary').click();
+  check(await fallback.locator('#gatski-bonnet details').getAttribute('open') !== null, 'Reading notes must work without JavaScript');
+  await noScript.close();
+  await page.setViewportSize({ width: 1440, height: 1000 });
+  await page.goto(base);
+  await page.keyboard.press('Tab');
+  check(await page.evaluate(() => document.activeElement.classList.contains('skip-link')), 'Keyboard navigation must begin with the skip link');
+  await page.screenshot({ path: 'artifacts/home-desktop.png' });
+  await page.goto(`${base}/hct/notes/rans-les.html`);
+  check(await page.locator('math').count() === 9, 'The worked derivation must render its native math');
+  const missing = await page.goto(`${base}/missing-page`);
+  check(missing.status() === 404, 'Missing routes must return a genuine 404');
+  check(await page.getByRole('link', { name: 'Open the HCT fieldbook' }).isVisible(), '404 must provide a recovery route');
+  check(errors.length === 0, `Browser errors: ${errors.join(', ')}`);
+  await page.goto(`${base}/hct/`);
+  await page.screenshot({ path: 'artifacts/hct-desktop.png' });
+  console.log('Browser checks passed: search, URL persistence, combined filters, empty recovery, keyboard, anchors, presentation mode, no-JS fallback, responsive layouts, math, images, and 404.');
+}
