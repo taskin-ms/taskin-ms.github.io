@@ -11,8 +11,6 @@ focus: |
   Hypersonic flows.
   Compressible turbulence.
 button: Explore the HCT fieldbook
-figure_caption: Flow, across scales.
-figure_note: Conceptual illustration, not simulation data.
 library:
   eyebrow: Resources
   title: |

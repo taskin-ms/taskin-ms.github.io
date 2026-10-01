@@ -10,7 +10,6 @@ layout: layouts/base.njk
       <p class="hero-focus">{{ lines(focus) }}</p>
       <a class="button" href="/hct/">{{ button }} <span aria-hidden="true">→</span></a>
     </div>
-    {% set figure_class = "home-figure" %}{% include "components/figure.njk" %}
   </section>
   <section class="home-library wrap" aria-labelledby="library-title">
     <div><p class="eyebrow">{{ library.eyebrow }}</p><h2 id="library-title">{{ lines(library.title) }}</h2></div>
