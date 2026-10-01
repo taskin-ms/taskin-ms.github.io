@@ -1,4 +1,6 @@
 import { basename } from 'node:path';
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 import { parse } from 'yaml';
 import { markdown, headings } from './scripts/markdown.mjs';
 import { evaluate } from '@mdx-js/mdx';
@@ -27,6 +29,7 @@ export default function(config) {
   config.addFilter('resourceSearch', r => [r.title,r.authors,r.venue,r.label,r.summary,r.notes,...(r.keywords || [])].join(' '));
   config.addFilter('formatLabel', value => ({book:'Book',paper:'Paper',preprint:'Preprint',dataset:'Dataset',reference:'Reference',note:'Study note'})[value]);
   config.addGlobalData('copyrightYear', () => new Date().getFullYear());
+  config.addGlobalData('stylesVersion', () => createHash('sha256').update(readFileSync(new URL('./styles.css', import.meta.url))).digest('hex').slice(0,12));
   config.addCollection('resources', api => {
     const ids = new Set();
     return api.getFilteredByTag('resources').filter(item => !item.data.draft).map(item => {
