@@ -36,4 +36,4 @@ Original, explicitly schematic flow illustrations: a shock line above a wall, a 
 
 All controls at least 44px high. Keyboard focus: 3px mulberry outline, 4px offset. Hover only changes color, surface, or arrow position. Motion below 240ms, transform/opacity only. Respect reduced motion. Core resources and navigation work without JavaScript. Filters update result count and shareable URL; zero results offer one reset action. Narrow screens stack rows and navigation without hiding the HCT entry point.
 
-An explicit presentation mode increases small type, removes optional figure texture, and strengthens rules. It persists on this device but has a visible pressed state. Default contrast must already be strong. Print styles remove controls and preserve titles, annotations, and source destinations.
+An explicit presentation mode increases small type and strengthens rules. It persists on this device but has a visible pressed state. Default contrast must already be strong. Print styles remove controls and preserve titles, annotations, and source destinations.

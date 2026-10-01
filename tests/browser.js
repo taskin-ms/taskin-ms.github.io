@@ -1,6 +1,6 @@
 async page => {
   const check = (condition, message) => { if (!condition) throw new Error(message); };
-  const base = 'http://127.0.0.1:4173';
+  const base = page.url().startsWith('https://taskin-ms.github.io/') ? 'https://taskin-ms.github.io' : 'http://127.0.0.1:4173';
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.setViewportSize({ width: 1440, height: 1000 });
