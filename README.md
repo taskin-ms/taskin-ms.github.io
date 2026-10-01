@@ -28,7 +28,7 @@ Eleventy builds Markdown into shared Nunjucks layouts under `templates/`. MDX is
 
 `.github/workflows/site.yml` installs locked build dependencies, generates the site, runs checks, and publishes `_site/` through GitHub Pages. Only a successful build of `main` deploys. Other builds run checks without changing the public website. If a content edit fails validation, the previous deployment remains available.
 
-Tests cover five-section structure, Markdown math, citation links, MDX rendering, automatic note indexing and order, draft exclusion, and generated local links. `tests/browser.js` and `tests/accessibility.js` provide Playwright checks; accessibility uses an axe-core bundle at ignored `artifacts/axe.min.js`.
+Tests cover six-section structure, section-local Sources, scientific figures, Markdown math, citation links, MDX rendering, automatic note indexing and order, draft exclusion, and generated local links. `tests/browser.js` and `tests/accessibility.js` provide Playwright checks; accessibility uses an axe-core bundle at ignored `artifacts/axe.min.js`.
 
 ## Repository history
 

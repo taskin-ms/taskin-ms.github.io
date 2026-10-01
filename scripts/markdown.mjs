@@ -1,5 +1,6 @@
 import MarkdownIt from 'markdown-it';
 import katex from 'katex';
+import { parse as parseYaml } from 'yaml';
 
 export const markdown = new MarkdownIt({ html: false, linkify: true });
 markdown.inline.ruler.after('escape', 'math_inline', (state, silent) => {
@@ -17,6 +18,13 @@ markdown.renderer.rules.math_inline = (tokens, index) => katex.renderToString(to
 export const headingId = title => title.toLowerCase().normalize('NFKD').replace(/[^\p{L}\p{N}\s-]/gu, '').trim().replace(/\s+/g, '-');
 const fence = markdown.renderer.rules.fence;
 markdown.renderer.rules.fence = (tokens, index, options, env, renderer) => {
+  if (tokens[index].info.trim() === 'figure') {
+    const figure = parseYaml(tokens[index].content);
+    if (!figure || !/^\/assets\/figures\/[\w.-]+\.(svg|png|webp)$/.test(figure.src) || typeof figure.alt !== 'string' || !figure.alt.trim() || typeof figure.caption !== 'string' || !figure.caption.trim()) throw new Error('Figures require a local asset, alt text, and caption');
+    if (!Number.isInteger(figure.width) || figure.width <= 0 || !Number.isInteger(figure.height) || figure.height <= 0) throw new Error('Figures require positive integer width and height');
+    const escape = markdown.utils.escapeHtml;
+    return `<figure class="scientific-figure${figure.kind === 'scaling' ? ' scaling-figure' : ' canonical-figure'}"><a href="${escape(figure.src)}" aria-label="View full-size figure: ${escape(figure.alt)}"><img src="${escape(figure.src)}" alt="${escape(figure.alt)}" width="${figure.width}" height="${figure.height}" loading="lazy" decoding="async"></a><figcaption>${markdown.renderInline(figure.caption, env)}</figcaption></figure>\n`;
+  }
   if (tokens[index].info.trim() !== 'math') return fence(tokens, index, options, env, renderer);
   const equation = katex.renderToString(tokens[index].content.trim(), { displayMode: true, output: 'mathml', throwOnError: true, trust: false });
   return `<div class="equation" tabindex="0" role="group" aria-label="Mathematical expression">${equation}</div>\n`;
@@ -36,13 +44,16 @@ export const headings = source => {
 };
 
 export const guideSections = source => {
-  const tokens = markdown.parse(source || '', {});
+  const env = {};
+  const tokens = markdown.parse(source || '', env);
   const starts = tokens.flatMap((token, index) => token.type === 'heading_open' && token.tag === 'h2' ? [index] : []);
   return starts.map((start, index) => {
     const heading = tokens[start + 1].content;
     const match = /^(\d{2})\s+—\s+(.+)$/.exec(heading);
     const number = match?.[1];
     const title = match?.[2] || heading;
-    return { number, title, id: number ? `section-${number}` : headingId(title), html: markdown.renderer.render(tokens.slice(start + 3, starts[index + 1] ?? tokens.length), markdown.options, {}) };
+    const body = tokens.slice(start + 3, starts[index + 1] ?? tokens.length);
+    const sourcesAt = body.findIndex((token, i) => token.type === 'heading_open' && token.tag === 'h3' && body[i + 1].content === 'Sources');
+    return { number, title, id: number ? `section-${number}` : headingId(title), html: markdown.renderer.render(sourcesAt < 0 ? body : body.slice(0, sourcesAt), markdown.options, env), sources: sourcesAt < 0 ? '' : markdown.renderer.render(body.slice(sourcesAt + 3), markdown.options, env) };
   });
 };

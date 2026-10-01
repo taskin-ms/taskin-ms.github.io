@@ -11,7 +11,9 @@ Open a content file on GitHub, click the pencil, edit, and **Commit changes** to
 
 ## Edit the field guide
 
-Text between `---` lines supplies the title, introduction, and five short navigation labels. The body is ordinary Markdown. Keep the five `## 01 — …` through `## 05 — …` headings and the final `## References`. Their numbered headings automatically create the sections and navigation; `###` headings create subsections. The links `#section-01` through `#section-05` remain stable when titles change.
+Text between `---` lines supplies the title, introduction, and six short navigation labels. The body is ordinary Markdown. Keep the six `## 01 — …` through `## 06 — …` headings. Their numbered headings automatically create the sections and navigation; `###` headings create subsections. The links `#section-01` through `#section-06` remain stable when titles change.
+
+End each section with `### Sources` and a short Markdown list of full citations. The layout gives these lists smaller type and unique anchors automatically. There is no global bibliography.
 
 Edit explanations, add citations, or add a dataset directly in the appropriate section. There is no separate catalog or metadata form. Reference links are defined once at the end of the file:
 
@@ -31,6 +33,22 @@ Density $\rho$ evolves through mass conservation.
 ```
 ````
 
+## Add or replace a scientific figure
+
+Upload its file to `assets/figures/`, then place this block where it belongs in the guide. Copy the image's pixel dimensions into `width` and `height`. All figures are responsive and open at full size when selected. Use `kind: scaling` for a larger plot; omit it for a canonical-flow schematic.
+
+````md
+```figure
+src: /assets/figures/mixing-layer.svg
+alt: "Two streams meet and form a growing turbulent shear layer."
+width: 600
+height: 300
+caption: "Original mixing-layer schematic ([Lele, 1994][lele])."
+```
+````
+
+For a published image, put its paper link, figure number, authors, and verified reuse license in the caption. Keep the axes and legend intact. Attribution for existing assets is recorded in `assets/figures/README.md`.
+
 ## Add a research note
 
 Copy [note.md](examples/note.md) into `notes/` with a descriptive filename. Fill in `title` and `intro`, write the body, and set `draft: false` to publish. Notes automatically appear alphabetically under **Derivations** in Section 02. Their headings generate a contents menu. `my-derivation.md` publishes at `/hct/notes/my-derivation.html`.
@@ -45,6 +63,6 @@ Copy [page.md](examples/page.md) into `pages/`. Set the title, description, and 
 
 ## Publishing errors and undo
 
-Open the failed [Actions run](https://github.com/taskin-ms/taskin-ms.github.io/actions) and read **Build** or **Check**. Invalid math, broken internal links, and changes to the five-section structure are checked. The previous successful website stays online if a build fails.
+Open the failed [Actions run](https://github.com/taskin-ms/taskin-ms.github.io/actions) and read **Build** or **Check**. Invalid math, missing figure captions or alt text, broken internal links, and changes to the six-section structure are checked. The previous successful website stays online if a build fails.
 
 For undo, open a file's **History**, copy the previous text, and commit it as a new edit. The old portfolio is preserved on `archive/decommissioned-portfolio-2026-09`.

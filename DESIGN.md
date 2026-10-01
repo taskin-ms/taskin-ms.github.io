@@ -4,7 +4,7 @@
 
 Foundation: [Cohere analysis in VoltAgent's awesome-design-md](https://github.com/voltagent/awesome-design-md/blob/main/design-md/cohere/DESIGN.md), inspected 2026-09-30. Its large geometric display typography, soft mineral surfaces, pill actions, and rule-separated research lists fit this brief better than IBM's corporate system or Linear's dark product canvas. This is an original adaptation, not a reproduction or an affiliation with Cohere.
 
-Retain: display/body contrast, spacious composition, and restrained rules. Use self-hosted Manrope and Roboto Mono with the light petal/mineral palette. The field guide uses one reading column, five numbered sections, and a plain bibliography. Remove marketing claims, card catalogs, and decorative diagrams.
+Retain: display/body contrast, spacious composition, and restrained rules. Use self-hosted Manrope and Roboto Mono with the light petal/mineral palette. The field guide uses one reading column, six numbered sections, and compact section-local Sources. Scientific figures explain flow topology or scaling; distinguish schematics from simulation data. Remove marketing claims, card catalogs, and decorative diagrams.
 
 ## Palette
 
@@ -34,9 +34,9 @@ Typography, numbered chapters, and equations supply the guide's visual identity.
 
 ## Interaction and projection
 
-Section navigation has five native anchor links with 44px target height. Keyboard focus uses a 3px mulberry outline and 4px offset. The full guide, citations, equations, and navigation work without browser JavaScript. Narrow layouts wrap navigation; long equations scroll within their own container.
+Section navigation has six native anchor links with 44px target height. Keyboard focus uses a 3px mulberry outline and 4px offset. The full guide, citations, equations, and navigation work without browser JavaScript. Narrow layouts wrap navigation; long equations scroll within their own container. Figures retain their aspect ratio and open at full size through native links.
 
-Default contrast must work on a projector without a presentation toggle. Print styles remove site navigation and preserve all five sections, equations, and references.
+Default contrast must work on a projector without a presentation toggle. Print styles remove site navigation and preserve all six sections, equations, figures, and section-local Sources.
 
 ## Content and templates
 

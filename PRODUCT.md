@@ -4,7 +4,7 @@ Register: research notes, with a compact academic field guide.
 
 The audience is researchers, engineers, collaborators, and people entering hypersonic compressible turbulence. The site's purpose is to build a recognizable research identity by contributing useful, attributed material. It must not claim expertise, publications, affiliations, or simulation results that have not been supplied and verified.
 
-The homepage is deliberately spare. `/hct/` is a single narrative with five numbered sections: compressible-flow physics; turbulence closure; canonical cases; data and AI; public datasets. References follow in a plain bibliography. Use clickable inline academic citations. Explain energy exchange and averaging with compact equations. Do not reintroduce a filterable catalog, badges, reading instructions, or repetitive caveats.
+The homepage is deliberately spare. `/hct/` is a single narrative with six numbered sections: compressible-flow physics; turbulence closure; canonical cases; scaling laws; data and AI; public datasets. Each section ends in a compact Sources block. Use clickable inline academic citations. Explain energy exchange, averaging, and scaling with compact equations. Three original flow schematics and one attributed CC BY scaling figure support the science. Do not reintroduce a filterable catalog, badges, reading instructions, or repetitive caveats.
 
 Voice: precise and concise. Name the method, observable, conditions, and limitations. Remove motivational slogans, metaphors, repeated caveats, and generic claims. Her commitment to participation and representation is expressed through open access to useful material, thoughtful credit, and invitations to contribute, without demographic slogans or invented outreach activities.
 

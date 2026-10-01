@@ -12,4 +12,5 @@ async page => {
   }
   console.log(JSON.stringify(findings));
   if (findings.some(f => f.violations.length)) throw new Error(JSON.stringify(findings.filter(f => f.violations.length)));
+  return findings;
 }

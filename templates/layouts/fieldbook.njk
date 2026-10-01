@@ -9,10 +9,11 @@ layout: layouts/base.njk
   </nav>
   <article class="guide-body" aria-label="Compressible turbulence field guide">
     {% for section in sections %}
-    <section class="{% if section.number %}guide-section{% else %}guide-references{% endif %}" id="{{ section.id }}" aria-labelledby="{{ section.id }}-title">
+    <section class="guide-section" id="{{ section.id }}" aria-labelledby="{{ section.id }}-title">
       <h2 id="{{ section.id }}-title">{% if section.number %}<span class="guide-number mono">{{ section.number }}</span>{% endif %}{{ section.title }}</h2>
       {{ section.html | safe }}
       {% if section.number == "02" and collections.publishedNotes.length %}<div class="guide-notes"><h3>Derivations</h3><ul>{% for note in collections.publishedNotes %}<li><a href="{{ note.url }}">{{ note.data.title | replace("\n", " ") }}</a></li>{% endfor %}</ul></div>{% endif %}
+      {% if section.sources %}<aside class="guide-sources" aria-labelledby="{{ section.id }}-sources"><h3 id="{{ section.id }}-sources">Sources</h3>{{ section.sources | safe }}</aside>{% endif %}
     </section>
     {% endfor %}
   </article>

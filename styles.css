@@ -90,8 +90,8 @@ summary:hover{text-decoration:underline;text-underline-offset:4px}
 .guide-contents a:hover{text-decoration:underline}
 .guide-contents .mono{font-size:12px;color:var(--accent)}
 .guide-body{min-width:0}
-.guide-section,.guide-references{padding-top:48px;scroll-margin-top:24px}
-.guide-section+.guide-section,.guide-references{margin-top:48px;border-top:1px solid var(--rule)}
+.guide-section{padding-top:48px;scroll-margin-top:24px}
+.guide-section+.guide-section{margin-top:48px;border-top:1px solid var(--rule)}
 .guide-body h2{font-size:clamp(28px,3vw,36px);line-height:1.25;letter-spacing:-.035em;max-width:36ch;margin-bottom:24px}
 .guide-number{display:block;color:var(--accent);margin-bottom:12px;font-size:14px}
 .guide-body h3{font-size:22px;font-weight:600;letter-spacing:-.025em;line-height:1.4;margin-block:32px 16px}
@@ -105,15 +105,23 @@ summary:hover{text-decoration:underline;text-underline-offset:4px}
 .guide-body p math,.guide-body li math{font-size:1.05em}
 .guide-notes{margin-top:28px}
 .guide-notes h3{font-size:18px}
-.guide-references{font-size:15px;line-height:1.7}
-.guide-references h2{font-size:28px}
-.guide-references ul{list-style:none;padding-left:0}
-.guide-references li{padding-left:20px;text-indent:-20px;max-width:none}
-.guide-references li+li{margin-top:20px}
+.guide-sources{max-width:84ch;margin-top:32px;padding-top:20px;border-top:1px solid var(--rule);font-size:14px;line-height:1.65;color:var(--secondary)}
+.guide-body .guide-sources h3{font-size:16px;letter-spacing:0;margin:0 0 12px}
+.guide-sources ul{list-style:none;padding:0;margin:0}
+.guide-sources li{padding-left:16px;text-indent:-16px;max-width:none}
+.guide-sources li+li{margin-top:12px}
+.scientific-figure{margin:20px 0 24px;max-width:560px}
+.scientific-figure>a{display:block}
+.scientific-figure img{display:block;width:100%;height:auto}
+.scientific-figure figcaption{margin-top:12px;font-size:14px;line-height:1.65;color:var(--secondary)}
+.scaling-figure{max-width:680px}
+.scaling-figure img{background:white}
+.guide-body blockquote{max-width:72ch;border-left:2px solid var(--accent);margin:28px 0;padding:8px 20px;font-size:17px}
+.guide-sources li,.scientific-figure{break-inside:avoid}
 @media(max-width:1100px){.note-layout{gap:40px;grid-template-columns:180px 1fr}}
 @media(max-width:850px){.site-header{min-height:88px;gap:16px}.site-header nav{gap:20px}.home-library,.about-section{gap:32px;grid-template-columns:1fr;padding-block:56px}.topic-line{flex-wrap:wrap;justify-content:flex-start}.note-layout{grid-template-columns:1fr;gap:32px}.note-toc{position:static}.note-toc nav{flex-direction:row;flex-wrap:wrap;gap:16px}.note-toc>a{margin-bottom:8px}.note-toc nav a{padding:8px 0}.site-footer{flex-wrap:wrap}.site-footer p:nth-child(2){order:3;width:100%}}
-@media(max-width:560px){body{font-size:17px}.site-header{align-items:flex-start;flex-direction:column;padding-block:20px 12px;gap:8px}.wordmark{font-size:16px}.site-header nav{width:100%;justify-content:space-between;gap:12px}.site-header nav a{font-size:14px}.eyebrow{font-size:13px;margin-bottom:20px}.site-footer{font-size:12px;gap:8px}.note-layout{padding-top:24px}.note-article h1{font-size:40px}.note-deck{font-size:18px}.note-article h2{font-size:27px}.equation{padding:20px 16px;font-size:17px}.note-table{font-size:14px}.note-table td,.note-table th{padding:12px 8px}.note-toc nav{gap:12px;font-size:13px}.guide-header{padding-top:28px}.guide-header p{font-size:17px}.guide-contents{gap:4px 20px}.guide-section,.guide-references{padding-top:32px}.guide-section+.guide-section,.guide-references{margin-top:32px}.guide-body h3{font-size:20px}.guide-body .equation{padding:12px;font-size:16px}.guide-references{font-size:14px}}
+@media(max-width:560px){body{font-size:17px}.site-header{align-items:flex-start;flex-direction:column;padding-block:20px 12px;gap:8px}.wordmark{font-size:16px}.site-header nav{width:100%;justify-content:space-between;gap:12px}.site-header nav a{font-size:14px}.eyebrow{font-size:13px;margin-bottom:20px}.site-footer{font-size:12px;gap:8px}.note-layout{padding-top:24px}.note-article h1{font-size:40px}.note-deck{font-size:18px}.note-article h2{font-size:27px}.equation{padding:20px 16px;font-size:17px}.note-table{font-size:14px}.note-table td,.note-table th{padding:12px 8px}.note-toc nav{gap:12px;font-size:13px}.guide-header{padding-top:28px}.guide-header p{font-size:17px}.guide-contents{gap:4px 20px}.guide-section{padding-top:32px}.guide-section+.guide-section{margin-top:32px}.guide-body h3{font-size:20px}.guide-body .equation{padding:12px;font-size:16px}}
 @media(max-width:380px){:root{--gutter:20px}.wordmark{font-size:15px}.button{font-size:14px;padding-inline:20px}.guide-header h1{font-size:36px}}
 @media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
 @media(forced-colors:active){.button{border:1px solid ButtonText}}
-@media print{body{background:white;color:black;font-size:11pt}.wrap{padding-inline:0;width:100%}.site-header,.guide-contents,.skip-link,.note-toc,.site-footer{display:none!important}.note-layout{display:block;padding:0}.guide-header{padding-top:0}.guide-header h1,.note-article h1{font-size:26pt}.guide-header p{font-size:11pt}.guide-section,.guide-references{padding-top:20px}.guide-section+.guide-section,.guide-references{margin-top:24px}.guide-body h2{font-size:18pt;break-after:avoid}.guide-body h3{font-size:13pt;break-after:avoid}.guide-body a{color:black}.guide-body .equation,.equation{background:none;border:0;padding:8px 0;overflow:visible;font-size:10pt;break-inside:avoid}.guide-references{font-size:9pt}.guide-references li{break-inside:avoid}.note-next{display:none}}
+@media print{body{background:white;color:black;font-size:11pt}.wrap{padding-inline:0;width:100%}.site-header,.guide-contents,.skip-link,.note-toc,.site-footer{display:none!important}.note-layout{display:block;padding:0}.guide-header{padding-top:0}.guide-header h1,.note-article h1{font-size:26pt}.guide-header p{font-size:11pt}.guide-section{padding-top:20px}.guide-section+.guide-section{margin-top:24px}.guide-body h2{font-size:18pt;break-after:avoid}.guide-body h3{font-size:13pt;break-after:avoid}.guide-body a{color:black}.guide-body .equation,.equation{background:none;border:0;padding:8px 0;overflow:visible;font-size:10pt;break-inside:avoid}.guide-sources{font-size:9pt}.guide-body .guide-sources h3{font-size:10pt}.note-next{display:none}}

@@ -10,3 +10,8 @@ const sections = guideSections('## 01 — Flow\n\nSee [source][s].\n\n### Densit
 assert.deepEqual(sections.map(s => s.id), ['section-01','references']);
 assert.ok(sections[0].html.includes('href="https://example.com"') && sections[0].html.includes('<h3') && sections[0].html.includes('<math'), 'Preserve global citation definitions and subheadings when grouping sections');
 console.log('Content checks passed: inline/display math, malformed math, literal HTML, heading links, and section grouping.');
+const local = guideSections('## 01 — Flow\n\nSee [source][s].\n\n### Sources\n\n- [Full citation][s]\n\n## 02 — Closure\n\nBody\n\n### Sources\n\n- [Full citation][s]\n\n[s]: https://example.com');
+assert.equal(local.length, 2);
+assert.ok(local.every(s => s.sources.includes('href="https://example.com"') && !s.html.includes('Full citation')), 'Separate Sources while preserving shared citation definitions');
+assert.ok(markdown.render('```figure\nsrc: /assets/figures/test.svg\nalt: "A <field>"\nwidth: 600\nheight: 300\ncaption: "See [paper](https://example.com)."\n```').includes('<figcaption>See <a'));
+assert.throws(() => markdown.render('```figure\nsrc: https://example.com/image.png\n```'), /Figures require/);

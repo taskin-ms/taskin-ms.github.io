@@ -5,7 +5,7 @@ page_title: Hypersonic Compressible Turbulence | Taskin Mehereen
 description: A concise field guide to compressibility, turbulent-flow physics, modeling, data, and emerging data-driven methods.
 headline: Hypersonic Compressible Turbulence
 intro: A concise field guide to compressibility, turbulent-flow physics, modeling, data, and emerging data-driven methods.
-section_labels: [Flow physics, Closure, Canonical flows, Data and AI, Datasets]
+section_labels: [Flow physics, Closure, Canonical flows, Scaling laws, Data and AI, Datasets]
 ---
 
 ## 01 — What is compressible flow?
@@ -78,7 +78,15 @@ M_t=\frac{\sqrt{\overline{u_i'u_i'}}}{\overline a}.
 
 This uses the three-component fluctuation magnitude; Favre-based conventions also occur. For a two-stream shear layer, convective Mach numbers use velocities relative to the convection speed of the structures; the common matched-convective-speed form is $M_c=|U_1-U_2|/(a_1+a_2)$ ([Papamoschou & Roshko, 1988][pr]). Mach numbers characterize different motions, but do not by themselves specify density variation, thermal conditions, or dilatational content ([Lele, 1994][lele]; [Donzis & John, 2020][dj]).
 
-## 02 — Effects of compressibility in turbulence and the turbulence closure problem
+### Sources
+
+- Gatski, T. B. & Bonnet, J.-P. (2013). [*Compressibility, Turbulence and High Speed Flow*][gb]. 2nd ed. Academic Press.
+- Lele, S. K. (1994). [“Compressibility Effects on Turbulence”][lele]. *Annual Review of Fluid Mechanics* **26**, 211–254.
+- Mittal, A. & Girimaji, S. S. (2019). [“Mathematical framework for analysis of internal energy dynamics and spectral distribution in compressible turbulent flows”][mg]. *Physical Review Fluids* **4**, 042601(R).
+- Donzis, D. A. & John, J. P. (2020). [“Universality and scaling in homogeneous compressible turbulence”][dj]. *Physical Review Fluids* **5**, 084609.
+- Papamoschou, D. & Roshko, A. (1988). [“The compressible turbulent shear layer: an experimental study”][pr]. *Journal of Fluid Mechanics* **197**, 453–477.
+
+## 02 — Compressibility and turbulence closure
 
 Turbulence already introduces nonlinear correlations between fluctuating quantities; compressibility additionally introduces density and thermodynamic fluctuations and their coupling with velocity ([Gatski & Bonnet, 2013, Chapter 3][gb]).
 
@@ -146,15 +154,38 @@ A pressure-fluctuation spectrum is not automatically an internal-energy spectrum
 
 These approaches differ in the correlations left unresolved ([Garnier, Adams & Sagaut, 2009][gas]; [Gatski & Bonnet, 2013, Chapter 5][gb]).
 
+### Sources
+
+- Gatski, T. B. & Bonnet, J.-P. (2013). [*Compressibility, Turbulence and High Speed Flow*][gb]. 2nd ed. Academic Press.
+- Garnier, E., Adams, N. & Sagaut, P. (2009). [*Large Eddy Simulation for Compressible Flows*][gas]. Springer.
+- Lele, S. K. (1994). [“Compressibility Effects on Turbulence”][lele]. *Annual Review of Fluid Mechanics* **26**, 211–254.
+- Mittal, A. & Girimaji, S. S. (2019). [“Mathematical framework for analysis of internal energy dynamics and spectral distribution in compressible turbulent flows”][mg]. *Physical Review Fluids* **4**, 042601(R).
+
 ## 03 — Canonical cases of compressible turbulence
 
 ### Homogeneous turbulence
 
-Homogeneous isotropic turbulence (HIT) removes mean shear and walls, isolating interactions among vortical motion, dilatation, and thermodynamic fluctuations. Forced HIT sustains turbulent motion; decaying HIT follows its unforced evolution. Diagnostics include turbulent Mach number, solenoidal and dilatational kinetic-energy contributions, pressure–dilatation, spectra, and inter-scale transfer. Local shocklets can occur under sufficiently strong compressibility ([Lele, 1994][lele]; [Garnier, Adams & Sagaut, 2009][gas]).
+```figure
+src: /assets/figures/homogeneous-turbulence.svg
+alt: "Vortical and dilatational motions fill a periodic volume, without a wall or imposed mean shear."
+width: 600
+height: 300
+caption: "Homogeneous turbulence in a periodic domain. Original schematic, not DNS data ([Donzis & John, 2020][dj])."
+```
 
-Donzis & John combine homogeneous-flow DNS and literature data to examine scaling with parameters that include internally generated dilatational scales. Their results concern homogeneous turbulence and specified statistical regimes, rather than a universal law for wall flows or wakes ([Donzis & John, 2020][dj]). Internal-energy spectra and kinetic–internal exchange require their own energetic formulation ([Mittal & Girimaji, 2019][mg]).
+Homogeneous isotropic turbulence (HIT) removes mean shear and walls, isolating interactions among vortical motion, dilatation, and thermodynamic fluctuations. Forced HIT sustains turbulent motion; decaying HIT follows its unforced evolution. Diagnostics include turbulent Mach number, solenoidal and dilatational motions, pressure–dilatation, spectra, inter-scale transfer, and kinetic–internal-energy exchange. Local shocklets can occur under sufficiently strong compressibility ([Lele, 1994][lele]).
+
+Donzis & John combine homogeneous-flow DNS and literature data to examine scaling with parameters that include internally generated dilatational scales. Their results concern homogeneous turbulence and specified statistical regimes, rather than a universal law for wall flows or wakes ([Donzis & John, 2020][dj]).
 
 ### Free shear flows
+
+```figure
+src: /assets/figures/mixing-layer.svg
+alt: "Two streams with U1 greater than U2 meet at a splitter edge; downstream vortices grow inside a widening free shear layer."
+width: 600
+height: 300
+caption: "A mixing layer develops between streams with different velocities, downstream of the splitter. Original schematic ([Gatski & Bonnet, 2013, Chapter 6][gb]; [Lele, 1994][lele])."
+```
 
 Mixing layers, jets, and wakes introduce mean shear, entrainment, and coherent structures. Compressibility affects instability characteristics, pressure fluctuations, and turbulent transport. Experiments on two-stream mixing layers find reduced spreading as convective Mach number increases; that relation is not a general scaling law for every jet or wake ([Papamoschou & Roshko, 1988][pr]; [Lele, 1994][lele]).
 
@@ -162,11 +193,122 @@ Jets and wakes have different mean-flow geometries and structure evolution. Wake
 
 ### Wall-bounded and shock-containing flows
 
+```figure
+src: /assets/figures/shock-boundary-layer.svg
+alt: "An incident shock interacts with an incoming turbulent boundary layer; a possible separation region, reflected shock, disturbed downstream layer, and wall are labeled."
+width: 600
+height: 300
+caption: "One possible separated shock-wave/boundary-layer interaction. Compressible wall turbulence need not contain a shock. Original schematic ([Gatski & Bonnet, 2013, Chapter 7][gb]; [Dussauge & Piponniau, 2008][dp])."
+```
+
 Supersonic and hypersonic turbulent boundary layers combine wall constraints with mean density, temperature, and viscosity variation. Thermal boundary conditions determine wall heat transfer and modify mean-property profiles ([Spina, Smits & Robinson, 1994][ssr]; [Gatski & Bonnet, 2013, Chapter 6][gb]).
 
 Compressible wall turbulence does not require a shock. In **shock–turbulence interaction**, incoming turbulence passes through a shock and its statistics change. Turbulence evolving near a shock may additionally experience shear and separation. In **shock-wave/boundary-layer interaction**, the shock couples to a wall boundary layer; sufficiently strong interactions can produce separation and unsteady shock motion ([Gatski & Bonnet, 2013, Chapter 7][gb]; [Dussauge & Piponniau, 2008][dp]).
 
-## 04 — Current directions in the age of data and AI
+### Sources
+
+- Donzis, D. A. & John, J. P. (2020). [“Universality and scaling in homogeneous compressible turbulence”][dj]. *Physical Review Fluids* **5**, 084609. Homogeneous turbulence.
+- Gatski, T. B. & Bonnet, J.-P. (2013). [*Compressibility, Turbulence and High Speed Flow*][gb]. 2nd ed. Academic Press, Chapters 6–7.
+- Lele, S. K. (1994). [“Compressibility Effects on Turbulence”][lele]. *Annual Review of Fluid Mechanics* **26**, 211–254.
+- Papamoschou, D. & Roshko, A. (1988). [“The compressible turbulent shear layer: an experimental study”][pr]. *Journal of Fluid Mechanics* **197**, 453–477. Free shear flows.
+- Spina, E. F., Smits, A. J. & Robinson, S. K. (1994). [“The Physics of Supersonic Turbulent Boundary Layers”][ssr]. *Annual Review of Fluid Mechanics* **26**, 287–319.
+- Dussauge, J.-P. & Piponniau, S. (2008). [“Shock/boundary-layer interactions: Possible sources of unsteadiness”][dp]. *Journal of Fluids and Structures* **24**, 1166–1175.
+
+## 04 — Scaling laws in compressible turbulence
+
+### Classical scaling context
+
+Scaling identifies dimensionless combinations that organize statistics across flows. Universality asks whether those relationships become independent of how turbulence is generated. In incompressible HIT, Reynolds number controls the separation between energy-containing and dissipative scales ([Pope, 2000][pope]):
+
+```math
+Re=\frac{UL}{\nu},\qquad Re_\lambda=\frac{u_1'\lambda}{\nu}.
+```
+
+Here $U$ and $L$ are characteristic large-scale velocity and length, $\nu$ is kinematic viscosity, $u_1'$ is a one-component rms velocity, and $\lambda$ is the longitudinal Taylor microscale. Kolmogorov's hypothesis associates sufficiently high-Reynolds-number small scales with mean dissipation $\varepsilon$ and viscosity, under assumptions of local isotropy and scale separation. The inertial-range prediction is
+
+```math
+E(k)\sim C_K\varepsilon^{2/3}k^{-5/3}.
+```
+
+$k$ is wavenumber and $C_K$ the Kolmogorov constant. This is an asymptotic description, not a spectrum guaranteed at every Reynolds number ([Pope, 2000][pope]).
+
+### Why compressibility complicates scaling
+
+Compressible turbulence adds dilatational motion and thermodynamic fluctuations to vortical dynamics. Its turbulent Mach number compares a turbulent velocity scale with acoustic propagation:
+
+```math
+M_t=\frac{u'}{\overline c},\qquad
+u'=\sqrt{\overline{u_i'u_i'}}.
+```
+
+$\overline c$ denotes the mean sound speed ($\overline a$ in Section 01). This three-component rms convention gives $u'=\sqrt{3}\,u_1'$ in isotropic turbulence. **$M_t$ alone does not generally organize compressibility effects:** flows with similar $M_t$ but different excitation of vortical and dilatational modes can have different statistics ([Donzis & John, 2020][dj]).
+
+### Solenoidal and dilatational scaling
+
+For the Helmholtz decomposition of velocity introduced in Section 01,
+
+```math
+\mathbf{u}=\mathbf{u}^{s}+\mathbf{u}^{d},\qquad
+\delta=\frac{u_d'}{u_s'}.
+```
+
+$u_s'$ and $u_d'$ are rms magnitudes of the solenoidal and dilatational velocity fluctuations. Small $\delta$ identifies primarily vortical motion; increasing $\delta$ gives greater relative dilatational content. Donzis & John analyze a DNS database and literature data with different forcing mechanisms. Including dilatational scales improves statistical collapse where $M_t$ alone leaves forcing-dependent differences ([Donzis & John, 2020][dj]).
+
+### Thermodynamic fluctuation scaling
+
+Pressure, density, and temperature statistics introduce further scaling questions:
+
+```math
+\frac{p_{\mathrm{rms}}}{\overline p},\qquad
+\frac{\rho_{\mathrm{rms}}}{\overline\rho},\qquad
+\frac{T_{\mathrm{rms}}}{\overline T}.
+```
+
+Each rms refers to a fluctuation about its mean. Donzis & Jagannathan examine these variances, cross-correlations, and spectra in stationary, solenoidally forced compressible DNS over Reynolds and turbulent Mach numbers. Their results distinguish low- and higher-$M_t$ behavior; the broader mode dependence is examined by Donzis & John ([Donzis & Jagannathan, 2013][dja]; [Donzis & John, 2020][dj]).
+
+### Evidence across homogeneous flows
+
+John & Donzis test the expanded parameterization against a broader collection of homogeneous isotropic and homogeneous shear flows, including different forcing mechanisms, reacting cases, and thermal non-equilibrium. Pressure variance, dissipation ratios, and velocity-gradient skewness probe different scales. Several statistics collapse closely in the expanded parameter space; these tests do not establish universality for arbitrary wall flows or shock-dominated inhomogeneous configurations ([John & Donzis, 2024][jd]).
+
+Their pressure scaling uses
+
+```math
+D=\frac{\delta\sqrt{1+\delta^2}}{M_t},\qquad
+M_d=\frac{u_d'}{\overline c}.
+```
+
+The figure compares pressure variance against $M_t$ with a renormalized variance against $D$. The second panel also rescales the ordinate by $F/(\gamma^2M_d^2)$, where $\gamma$ is the specific-heat ratio and $F$ the paper's pressure–dilatational-velocity equipartition function ([John & Donzis, 2024, Eq. 2][jd]).
+
+```figure
+kind: scaling
+src: /assets/figures/john-donzis-2024-fig2.png
+alt: "Pressure-variance data scatter across homogeneous flows when plotted against turbulent Mach number in panel a; a changed normalization and the dilatational parameter D substantially collapse the data in panel b. All original axes and annotations are retained."
+width: 968
+height: 764
+caption: "Pressure variance: (a) against $M_t$; (b) with $D$ and a changed ordinate normalization. Symbols identify the databases in the [open article][jd-open]. Figure 2, [John & Donzis (2024)][jd], Physics of Fluids 36, 106121. © Author(s) 2024, [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Panels unchanged; surrounding page text omitted. [Full-size figure](/assets/figures/john-donzis-2024-fig2.png)."
+```
+
+### Spectral scaling
+
+The spectrum $E(k)$ distributes kinetic energy over wavenumbers: small $k$ represents large energy-containing motions, intermediate scales may support an inertial range, and large $k$ approaches dissipation ([Pope, 2000][pope]). For variable density, a spectrum per unit mean mass can be defined from $\sqrt{\rho/\overline\rho}\,\mathbf u$. In a periodic domain, an orthogonal Helmholtz decomposition of this weighted field gives
+
+```math
+E(k)=E_s(k)+E_d(k).
+```
+
+This weighting differs from decomposing unweighted velocity to define $\delta$. Compressible spectral descriptions also require internal-energy dynamics and kinetic–internal exchange; no single $k^{-5/3}$ law applies to every compressible field or regime ([Mittal & Girimaji, 2019][mg]; [Donzis & Jagannathan, 2013][dja]).
+
+> In the homogeneous flows studied, Reynolds number and turbulent Mach number alone leave unresolved statistical differences. The relative dilatational and solenoidal amplitudes provide an additional coordinate for organizing those statistics ([Donzis & John, 2020][dj]; [John & Donzis, 2024][jd]).
+
+### Sources
+
+- Pope, S. B. (2000). [*Turbulent Flows*][pope]. Cambridge University Press.
+- Donzis, D. A. & John, J. P. (2020). [“Universality and scaling in homogeneous compressible turbulence”][dj]. *Physical Review Fluids* **5**, 084609.
+- Donzis, D. A. & Jagannathan, S. (2013). [“Fluctuations of thermodynamic variables in stationary compressible turbulence”][dja]. *Journal of Fluid Mechanics* **733**, 221–244.
+- John, J. P. & Donzis, D. A. (2024). [“Strong evidence for universality in homogeneous compressible turbulence”][jd]. *Physics of Fluids* **36**, 106121. [Open article][jd-open].
+- Mittal, A. & Girimaji, S. S. (2019). [“Mathematical framework for analysis of internal energy dynamics and spectral distribution in compressible turbulent flows”][mg]. *Physical Review Fluids* **4**, 042601(R).
+
+## 05 — Current directions in the age of data and AI
 
 DNS, experiments, and larger numerical datasets support data-assisted turbulence modeling and flow prediction. The literature studies model inference and uncertainty reduction alongside the governing equations ([Duraisamy, Iaccarino & Xiao, 2019][dix]).
 
@@ -186,9 +328,14 @@ Reduced-order models and learned time advancement approximate flow evolution in 
 
 Training-domain coverage, geometric transfer, conservation, interpretability, and stability after coupling a model to a solver remain evaluation issues. For compressible applications, extrapolation in Reynolds and Mach numbers adds changes in both turbulent and thermodynamic regimes. An a-priori fit to stored data does not establish a-posteriori stability or accuracy ([Duraisamy et al., 2019][dix]; [Brunton et al., 2020][bnk]).
 
-The energy balances of [Mittal & Girimaji (2019)][mg] and homogeneous-flow scaling of [Donzis & John (2020)][dj] define physical quantities and regimes relevant to compressible modeling. These are physics studies, not machine-learning papers.
+### Sources
 
-## 05 — Publicly available datasets
+- Duraisamy, K., Iaccarino, G. & Xiao, H. (2019). [“Turbulence Modeling in the Age of Data”][dix]. *Annual Review of Fluid Mechanics* **51**, 357–377.
+- Brunton, S. L., Noack, B. R. & Koumoutsakos, P. (2020). [“Machine Learning for Fluid Mechanics”][bnk]. *Annual Review of Fluid Mechanics* **52**, 477–508.
+- Ling, J., Kurzawski, A. & Templeton, J. (2016). [“Reynolds averaged turbulence modelling using deep neural networks with embedded invariance”][lkt]. *Journal of Fluid Mechanics* **807**, 155–166.
+- Kovachki, N., Li, Z., Liu, B., Azizzadenesheli, K., Bhattacharya, K., Stuart, A. & Anandkumar, A. (2023). [“Neural Operator: Learning Maps Between Function Spaces With Applications to PDEs”][kov]. *Journal of Machine Learning Research* **24**(89), 1–97.
+
+## 06 — Publicly available datasets
 
 ### Johns Hopkins Turbulence Database — JHTDB
 
@@ -211,20 +358,8 @@ The public [compressible inert CH₄–O₂ HIT DNS][blast-hit] is distributed a
 - [Turbulence Modeling Resource: supersonic/hypersonic flat-plate DNS][tmr] — boundary-layer statistics and turbulent kinetic-energy budgets; no high-enthalpy effects are included.
 - [Computational Turbulence Laboratory][ctl] — downloadable averaged profiles for compressible boundary layers and canonical shock–turbulence interactions, rather than complete instantaneous volume fields.
 
-## References
+### Sources
 
-- Gatski, T. B. & Bonnet, J.-P. (2013). *Compressibility, Turbulence and High Speed Flow*. 2nd ed. Academic Press. [Publisher][gb].
-- Lele, S. K. (1994). “Compressibility Effects on Turbulence.” *Annual Review of Fluid Mechanics* **26**, 211–254. [DOI: 10.1146/annurev.fl.26.010194.001235][lele].
-- Garnier, E., Adams, N. & Sagaut, P. (2009). *Large Eddy Simulation for Compressible Flows*. Springer. [DOI: 10.1007/978-90-481-2819-8][gas].
-- Mittal, A. & Girimaji, S. S. (2019). “Mathematical framework for analysis of internal energy dynamics and spectral distribution in compressible turbulent flows.” *Physical Review Fluids* **4**, 042601(R). [DOI: 10.1103/PhysRevFluids.4.042601][mg].
-- Donzis, D. A. & John, J. P. (2020). “Universality and scaling in homogeneous compressible turbulence.” *Physical Review Fluids* **5**, 084609. [DOI: 10.1103/PhysRevFluids.5.084609][dj].
-- Duraisamy, K., Iaccarino, G. & Xiao, H. (2019). “Turbulence Modeling in the Age of Data.” *Annual Review of Fluid Mechanics* **51**, 357–377. [DOI: 10.1146/annurev-fluid-010518-040547][dix].
-- Papamoschou, D. & Roshko, A. (1988). “The compressible turbulent shear layer: an experimental study.” *Journal of Fluid Mechanics* **197**, 453–477. [DOI: 10.1017/S0022112088003325][pr].
-- Spina, E. F., Smits, A. J. & Robinson, S. K. (1994). “The Physics of Supersonic Turbulent Boundary Layers.” *Annual Review of Fluid Mechanics* **26**, 287–319. [DOI: 10.1146/annurev.fl.26.010194.001443][ssr].
-- Dussauge, J.-P. & Piponniau, S. (2008). “Shock/boundary-layer interactions: Possible sources of unsteadiness.” *Journal of Fluids and Structures* **24**, 1166–1175. [DOI: 10.1016/j.jfluidstructs.2008.06.003][dp].
-- Ling, J., Kurzawski, A. & Templeton, J. (2016). “Reynolds averaged turbulence modelling using deep neural networks with embedded invariance.” *Journal of Fluid Mechanics* **807**, 155–166. [DOI: 10.1017/jfm.2016.615][lkt].
-- Brunton, S. L., Noack, B. R. & Koumoutsakos, P. (2020). “Machine Learning for Fluid Mechanics.” *Annual Review of Fluid Mechanics* **52**, 477–508. [DOI: 10.1146/annurev-fluid-010719-060214][bnk].
-- Kovachki, N., Li, Z., Liu, B., Azizzadenesheli, K., Bhattacharya, K., Stuart, A. & Anandkumar, A. (2023). “Neural Operator: Learning Maps Between Function Spaces With Applications to PDEs.” *Journal of Machine Learning Research* **24**(89), 1–97. [Publisher][kov].
 - Johns Hopkins Turbulence Database. [Official documentation][jhtdb], [dataset descriptions][jhtdb-old], and [database access](https://turbulence.idies.jhu.edu/database).
 - BLASTNet. [Official project documentation][blast], [compressible inert CH₄–O₂ HIT DNS][blast-hit], and [dataset metadata][blast-meta].
 - Turbulence Modeling Resource. [Supersonic/hypersonic zero-pressure-gradient plate DNS][tmr].
@@ -235,6 +370,10 @@ The public [compressible inert CH₄–O₂ HIT DNS][blast-hit] is distributed a
 [gas]: https://doi.org/10.1007/978-90-481-2819-8
 [mg]: https://doi.org/10.1103/PhysRevFluids.4.042601
 [dj]: https://doi.org/10.1103/PhysRevFluids.5.084609
+[jd]: https://doi.org/10.1063/5.0218585
+[jd-open]: https://d-nb.info/1373498471/34
+[dja]: https://doi.org/10.1017/jfm.2013.445
+[pope]: https://doi.org/10.1017/CBO9780511840531
 [dix]: https://doi.org/10.1146/annurev-fluid-010518-040547
 [pr]: https://doi.org/10.1017/S0022112088003325
 [ssr]: https://doi.org/10.1146/annurev.fl.26.010194.001443
