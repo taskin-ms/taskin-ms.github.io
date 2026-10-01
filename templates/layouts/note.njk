@@ -1,0 +1,13 @@
+---
+layout: layouts/base.njk
+---
+{% from "components/type.njk" import lines %}
+<main id="main" class="note-layout wrap">
+  <aside class="note-toc"><a class="text-link" href="/hct/#math"><span aria-hidden="true">←</span>Back to the fieldbook</a><nav aria-label="Derivation contents">{% for heading in page.rawInput | headings %}<a href="#{{ heading.id }}">{{ heading.title }}</a>{% endfor %}</nav></aside>
+  <article class="note-article">
+    <p class="eyebrow">{{ eyebrow }}</p><h1>{{ lines(title) }}</h1><p class="note-deck">{{ intro }}</p>
+    <div class="note-meta">{% for item in meta %}<span>{{ item }}</span>{% endfor %}</div>
+    <div class="note-body">{{ content | safe }}</div>
+    <div class="note-next"><a class="text-link" href="/hct/#data">Find data to test against <span aria-hidden="true">→</span></a></div>
+  </article>
+</main>

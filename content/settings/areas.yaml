@@ -1,0 +1,31 @@
+# Keep these IDs stable: existing links and filters use them.
+- id: theory
+  title: Basic theory
+  short_title: Basic theory
+  filter_label: Theory
+  home_label: Theory
+  intro: Governing equations, compressibility effects, and filtering.
+- id: frontier
+  title: Research frontiers
+  short_title: Research frontiers
+  filter_label: Research
+  home_label: Research
+  intro: DNS and LES scaling, wall modeling, and machine learning. Newest work appears first.
+- id: data
+  title: Datasets & verification
+  short_title: Datasets
+  filter_label: Data
+  home_label: Data
+  intro: Public data for reproducing profiles, statistics, and budgets.
+- id: aero
+  title: The aerospace perspective
+  short_title: Aerospace
+  filter_label: Aerospace
+  home_label: Aerospace
+  intro: Hypersonic heat transfer, transition, and shock interactions.
+- id: math
+  title: Mathematical derivations
+  short_title: Derivations
+  filter_label: Derivations
+  home_label: Derivations
+  intro: Worked equations with the assumptions stated.

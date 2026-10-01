@@ -1,28 +1,40 @@
 import assert from 'node:assert/strict';
-import { readFile, stat } from 'node:fs/promises';
-const root = new URL('../', import.meta.url);
-const resources = JSON.parse(await readFile(new URL('hct/resources.json', root), 'utf8'));
-const library = await readFile(new URL('hct/index.html', root), 'utf8');
-assert.equal((library.match(/data-resource data-topic=/g) || []).length, resources.length, 'Run npm run build after editing resources');
-assert.equal((library.match(/data-library-section/g) || []).length, 5, 'The library must preserve the five requested areas');
-for (const resource of resources) assert.ok(library.includes(`id="${resource.id}"`), `Missing ${resource.id}`);
-for (const path of ['index.html', 'hct/index.html', 'hct/notes/rans-les.html', '404.html']) {
-  const html = await readFile(new URL(path, root), 'utf8');
-  assert.equal((html.match(/<h1[ >]/g) || []).length, 1, `${path} needs one main heading`);
-  assert.ok(html.includes('lang="en"'), `${path} needs a document language`);
-  assert.ok(!html.includes('[TODO]') && !html.includes('href="#"'), `${path} must not contain unfinished links`);
-  for (const match of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
-    const link = match[1].replace(/&amp;/g, '&');
-    if (/^(https?:|mailto:|data:)/.test(link)) continue;
-    const target = link.startsWith('/') ? new URL(link.slice(1), root) : new URL(link, new URL(path, root));
-    const file = target.pathname.endsWith('/') ? new URL('index.html', target) : target;
-    file.hash = ''; file.search = '';
-    const info = await stat(file).catch(() => null);
-    assert.ok(info, `Broken local link in ${path}: ${link}`);
-    if (target.hash && info.isFile() && file.pathname.endsWith('.html')) {
-      const destination = await readFile(file, 'utf8');
-      assert.ok(destination.includes(`id="${decodeURIComponent(target.hash.slice(1))}"`), `Missing anchor in ${path}: ${link}`);
+import { readFile,stat,readdir } from 'node:fs/promises';
+const root = new URL('../_site/',import.meta.url);
+const pages = [];
+async function scan(dir) {
+  for(const entry of await readdir(dir,{withFileTypes:true})) {
+    const file = new URL(entry.name + (entry.isDirectory() ? '/' : ''),dir);
+    if(entry.isDirectory()) await scan(file);
+    else if(entry.name.endsWith('.html')) pages.push(file);
+  }
+}
+await scan(root);
+const library = await readFile(new URL('hct/index.html',root),'utf8');
+const count = (library.match(/data-resource data-topic=/g)||[]).length;
+assert.ok(count > 0,'The bibliography must include resources');
+assert.ok(library.includes(`${count} resources available`),'The resource count must update automatically');
+assert.equal((library.match(/data-library-section/g)||[]).length,5,'Keep the five resource areas');
+for(const page of pages) {
+  const html = await readFile(page,'utf8');
+  const path = page.href.slice(root.href.length);
+  assert.equal((html.match(/<h1[ >]/g)||[]).length,1,`${path}: use one main heading (the layout supplies it)`);
+  assert.ok(html.includes('lang="en"'),`${path}: document language missing`);
+  const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(m=>m[1]);
+  assert.equal(new Set(ids).size,ids.length,`${path}: duplicate heading or resource IDs`);
+  for(const match of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
+    const link = match[1].replace(/&amp;/g,'&');
+    if(/^(https?:|mailto:|data:)/.test(link)) continue;
+    const target = link.startsWith('/') ? new URL(link.slice(1),root) : new URL(link,page);
+    const file = target.pathname.endsWith('/') ? new URL('index.html',target) : new URL(target);
+    file.hash=''; file.search='';
+    const info = await stat(file).catch(()=>null);
+    assert.ok(info,`${path}: broken local link ${link}`);
+    if(target.hash && info.isFile() && file.pathname.endsWith('.html')) {
+      const destination = await readFile(file,'utf8');
+      assert.ok(destination.includes(`id="${decodeURIComponent(target.hash.slice(1))}"`),`${path}: missing heading or resource ${link}`);
     }
   }
 }
-console.log(`Static checks passed: ${resources.length} resources, five areas, page semantics, local files, and anchors.`);
+assert.ok(!pages.some(p=>p.href.includes('/archive/')),'The decommissioned site must not be published');
+console.log(`Static checks passed: ${pages.length} pages, ${count} resources, five areas, automatic counts, and local links.`);

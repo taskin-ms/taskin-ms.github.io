@@ -1,0 +1,24 @@
+---
+layout: layouts/base.njk
+---
+{% from "components/type.njk" import lines %}
+<main id="main">
+  <section class="home-hero wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">{{ eyebrow }}</p>
+      <h1>{{ lines(headline) }}<span class="accent-dot">.</span></h1>
+      <p class="hero-focus">{{ lines(focus) }}</p>
+      <a class="button" href="/hct/">{{ button }} <span aria-hidden="true">→</span></a>
+    </div>
+    {% set figure_class = "home-figure" %}{% include "components/figure.njk" %}
+  </section>
+  <section class="home-library wrap" aria-labelledby="library-title">
+    <div><p class="eyebrow">{{ library.eyebrow }}</p><h2 id="library-title">{{ lines(library.title) }}</h2></div>
+    <div class="home-library-copy"><p>{{ library.description }}</p><a class="text-link" href="/hct/">{{ library.button }} <span aria-hidden="true">→</span></a></div>
+    <div class="topic-line">{% for area in areas %}<span>0{{ loop.index }} / {{ area.home_label }}</span>{% endfor %}</div>
+  </section>
+  <section class="about-section wrap" id="about" aria-labelledby="about-title">
+    <div><p class="eyebrow">{{ about.eyebrow }}</p><h2 id="about-title">{{ lines(about.title) }}</h2></div>
+    <div class="reading-copy">{{ content | safe }}<div class="inline-links"><a class="text-link" href="mailto:{{ site.email }}">{{ about.contact_label }} <span aria-hidden="true">↗</span></a><a class="text-link" href="{{ site.scholar }}">Google Scholar <span aria-hidden="true">↗</span></a></div></div>
+  </section>
+</main>

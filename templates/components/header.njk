@@ -1,0 +1,8 @@
+<header class="site-header wrap">
+  <a class="wordmark" href="/"{% if page.url == '/' %} aria-current="page"{% endif %}><img src="/assets/mark.svg" alt="" width="32" height="32">{{ site.name }}</a>
+  <nav aria-label="Main navigation">
+    {% for link in site.navigation %}<a href="{{ link.url }}"{% if page.url == link.url %} aria-current="page"{% endif %}>{{ link.label }}</a>{% endfor %}
+    {% for entry in collections.pages %}{% if entry.data.navigation %}<a href="{{ entry.url }}"{% if page.url == entry.url %} aria-current="page"{% endif %}>{{ entry.data.nav_label or entry.data.title }}</a>{% endif %}{% endfor %}
+    <a href="mailto:{{ site.email }}">{{ site.contact_label }} <span aria-hidden="true">↗</span></a>
+  </nav>
+</header>

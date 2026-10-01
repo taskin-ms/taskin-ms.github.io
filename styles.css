@@ -158,6 +158,9 @@ summary:hover{text-decoration:underline;text-underline-offset:4px}
 .note-callout{padding:24px 28px;background:var(--mineral);border-radius:12px;margin-top:24px;font-size:16px}
 .note-callout strong{display:block;margin-bottom:8px}
 .note-next{border-top:1px solid var(--rule);margin-top:48px;padding-top:28px}
+.note-body>h2{padding-top:48px;scroll-margin-top:32px}
+.note-body blockquote{margin:24px 0 0;padding:24px 28px;background:var(--mineral);border-radius:12px;font-size:16px}
+.note-body blockquote strong{display:block;margin-bottom:8px}
 .not-found{padding-block:100px;min-height:60vh;max-width:900px}
 .not-found h1{font-size:64px}
 .not-found p{margin-block:24px;max-width:54ch}

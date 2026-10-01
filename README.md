@@ -1,52 +1,40 @@
-# Taskin Mehereen — research fieldbook
+# Taskin Mehereen — research website
 
-A static research site centered on hypersonic compressible turbulence. The [HCT fieldbook](https://taskin-ms.github.io/hct/) brings together foundational theory, scaling and modeling papers, public datasets, aerospace perspectives, and worked mathematical notes.
+**To edit the website, start with [content/START-HERE.md](content/START-HERE.md).** All editable text, resources, notes, and site settings live in `content/`. Saving changes to `main` automatically builds and publishes [the website](https://taskin-ms.github.io).
 
-## Work locally
+| Task | Open |
+|---|---|
+| Edit homepage and bio | [content/pages/home.md](content/pages/home.md) |
+| Edit the resource page | [content/pages/fieldbook.md](content/pages/fieldbook.md) |
+| Add a paper, book, or dataset | [content/resources/](content/resources/) |
+| Write a research note | [content/notes/](content/notes/) |
+| Change contact details | [content/settings/site.yaml](content/settings/site.yaml) |
 
-Use Node.js 22 or newer. There are no npm dependencies to install.
+No HTML editing or local software is required for content changes. The editing guide includes copyable examples. Resource grouping, sorting, numbering, search metadata, and counts are generated. New notes appear in the library automatically. Drafts remain unpublished; remember that source files in this repository are public.
+
+## Development
+
+Use Node.js 22 or newer.
 
 ```sh
+npm ci
 npm run build
 npm test
 npm start
 ```
 
-Open http://127.0.0.1:4173. The server is local only. Generated HTML is committed so GitHub Pages needs no build tools.
+Local preview: http://localhost:4173. `npm start` watches content and template edits. `npm run build` clears and regenerates `_site/`; generated HTML is not committed.
 
-## Update the library
+Eleventy builds Markdown into shared Nunjucks layouts under `templates/`. MDX is also supported for research notes and page bodies, with reusable components under `templates/mdx/`. Plain `.md` is the default authoring format. MDX renders at build time; its runtime is not shipped to readers. Interactive components use native HTML or maintained client JavaScript. Styles and the library's browser behavior are in `styles.css` and `script.js`.
 
-Edit `hct/resources.json`, then run `npm run build` and `npm test`. Each entry needs a stable ID, title, authors, year, venue, topic, format, label, access information, tags, source URL, description, and scope/reading cues. Use one of these topics:
+`.github/workflows/site.yml` installs locked build dependencies, generates the site, runs checks, and publishes `_site/` through GitHub Pages. Only a successful build of `main` deploys. Other builds run checks without changing the public website. If a content edit fails validation, the previous deployment remains available.
 
-| Topic | Section |
-|---|---|
-| `theory` | Basic theory |
-| `frontier` | Research frontiers: scaling, DNS, LES, ML |
-| `data` | Datasets and verification |
-| `aero` | The aerospace perspective |
-| `math` | Mathematical derivations |
+Tests cover filters, automatic sorting, Markdown math, MDX rendering, automatic note indexing, draft exclusion, counts, and generated local links. `tests/browser.js` and `tests/accessibility.js` provide additional Playwright checks; the latter uses an axe-core bundle at ignored `artifacts/axe.min.js`.
 
-Formats are `book`, `paper`, `preprint`, `dataset`, `reference`, and `note`. Verify bibliographic details against original sources. Describe dataset coverage and available quantities accurately; distinguish preprints and project overviews from established results. Add local study notes under `hct/notes/` and cite their sources.
+## Repository history
 
-Page introductions live in `index.html` and `hct/index.html`. Resource rows between the library markers are generated; edit the JSON rather than those rows. `styles.css` contains the design tokens and responsive styles. `script.js` handles search, combined filters, shareable URLs, and presentation mode. Reading and navigation also work without JavaScript.
-
-## Publish updates
-
-GitHub Pages serves the root of **`redesign/hct-research-library`**. A push to that branch triggers a deployment to https://taskin-ms.github.io. Check the repository's Actions tab for deployment status; publication takes a short time after each push. The original `main` branch remains available for reference. An unlinked copy of the earlier site is preserved under `archive/`.
-
-## Browser checks
-
-`tests/browser.js` exercises search, filters, keyboard use, presentation preference, responsive layouts, the no-JavaScript fallback, MathML, and recovery from missing pages. Run it with the installed Playwright CLI against the local server:
-
-```sh
-playwright-cli -s=hct open http://127.0.0.1:4173
-playwright-cli -s=hct run-code --filename=tests/browser.js
-```
-
-The same checks use the public site when the browser is first navigated to https://taskin-ms.github.io/hct/. Screenshots are saved under ignored `artifacts/`. `tests/accessibility.js` additionally expects an axe-core browser bundle at `artifacts/axe.min.js` and audits the three reading pages at desktop and mobile widths. Automated checks supplement manual review of keyboard focus, reading order, text scaling, and contrast.
+`main` contains the current site. The earlier portfolio is preserved at [archive/decommissioned-portfolio-2026-09](https://github.com/taskin-ms/taskin-ms.github.io/tree/archive/decommissioned-portfolio-2026-09) and is not included in deployments.
 
 ## Design and attribution
 
-The visual direction adapts [Cohere's design reference in awesome-design-md](https://github.com/voltagent/awesome-design-md/blob/main/design-md/cohere/DESIGN.md) to a light petal/mineral palette, strong ink contrast, and an open research bibliography. See `DESIGN.md` for tokens and `PRODUCT.md` for editorial principles. The site makes no claim of affiliation with Cohere.
-
-Manrope and Roboto Mono are self-hosted under `assets/fonts/`; their SIL Open Font License files are included. Flow artwork is original and explicitly schematic, rather than numerical evidence. Presentation mode enlarges small text and strengthens structural lines; it is intended to improve meeting-room readability alongside the high-contrast default.
+See [DESIGN.md](DESIGN.md) and [PRODUCT.md](PRODUCT.md) for the design and editorial principles. The visual reference is [Cohere in awesome-design-md](https://github.com/voltagent/awesome-design-md/blob/main/design-md/cohere/DESIGN.md). There is no affiliation with Cohere. Manrope and Roboto Mono are self-hosted with their SIL Open Font License files. The flow illustration is schematic, not numerical data.

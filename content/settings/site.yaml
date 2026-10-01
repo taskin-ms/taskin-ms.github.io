@@ -1,0 +1,13 @@
+# These details appear throughout the site. Change them once, here.
+name: Taskin Mehereen
+email: tm2560@tamu.edu
+scholar: https://scholar.google.com/citations?hl=en&user=uwmkNCoAAAAJ
+url: https://taskin-ms.github.io
+repository: https://github.com/taskin-ms/taskin-ms.github.io
+footer: Research notes and resources.
+navigation:
+  - label: HCT fieldbook
+    url: /hct/
+  - label: About
+    url: /#about
+contact_label: Contact

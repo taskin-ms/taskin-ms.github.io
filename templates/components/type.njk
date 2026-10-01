@@ -1,0 +1,1 @@
+{% macro lines(text) %}{% for line in text.trim() | lines %}{{ line }}{% if not loop.last %}<br>{% endif %}{% endfor %}{% endmacro %}
