@@ -310,23 +310,7 @@ This weighting differs from decomposing unweighted velocity to define $\delta$. 
 
 ## 05 — Current directions in the age of data and AI
 
-DNS, experiments, and larger numerical datasets support data-assisted turbulence modeling and flow prediction. The literature studies model inference and uncertainty reduction alongside the governing equations ([Duraisamy, Iaccarino & Xiao, 2019][dix]).
-
-### Data-assisted turbulence closure
-
-Work includes RANS-model corrections, Reynolds-stress prediction, discrepancy inference, and learned subgrid constitutive relations. These models supply or correct unresolved terms within conservation equations; learned closures do not have established general validity across flow regimes ([Duraisamy et al., 2019][dix]; [Brunton, Noack & Koumoutsakos, 2020][bnk]).
-
-### Physics-constrained learning
-
-Invariance, conservation, realizability, dimensional consistency, and known asymptotic or scaling behavior restrict admissible model forms. For example, Ling and collaborators embed tensor invariance in a Reynolds-stress anisotropy model. Such constraints specify physical structure without establishing universal predictive superiority ([Ling, Kurzawski & Templeton, 2016][lkt]; [Duraisamy et al., 2019][dix]).
-
-### Reduced-order and operator-based modeling
-
-Reduced-order models and learned time advancement approximate flow evolution in a smaller state representation. Neural operators learn mappings between functions, including input-to-solution or field-to-field mappings for PDEs. These tasks differ from closing a stress balance ([Brunton et al., 2020][bnk]; [Kovachki et al., 2023][kov]).
-
-### Generalization and physical consistency
-
-Training-domain coverage, geometric transfer, conservation, interpretability, and stability after coupling a model to a solver remain evaluation issues. For compressible applications, extrapolation in Reynolds and Mach numbers adds changes in both turbulent and thermodynamic regimes. An a-priori fit to stored data does not establish a-posteriori stability or accuracy ([Duraisamy et al., 2019][dix]; [Brunton et al., 2020][bnk]).
+DNS and experimental data are used to infer RANS-model corrections and subgrid closures ([Duraisamy et al., 2019][dix]). Learned Reynolds-stress models can incorporate tensor invariance ([Ling et al., 2016][lkt]). Reduced-order models approximate flow evolution, while neural operators learn mappings between input and solution fields ([Brunton et al., 2020][bnk]; [Kovachki et al., 2023][kov]). An a-priori fit does not establish accuracy across new flow conditions or stability after coupling to a solver ([Duraisamy et al., 2019][dix]; [Brunton et al., 2020][bnk]).
 
 ### Sources
 
