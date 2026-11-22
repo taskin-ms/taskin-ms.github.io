@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Taskin Mehereen</title><link>https://taskin-ms.github.io/</link><description>Recent content on Taskin Mehereen</description><generator>Hugo</generator><language>en-us</language><atom:link href="https://taskin-ms.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>Learning Unsteady Compressible Flows</title><link>https://taskin-ms.github.io/projects/capsule/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://taskin-ms.github.io/projects/capsule/</guid><description>Graph neural network surrogates for unsteady compressible flows around blunt-body geometries.</description></item><item><title>Compressible Turbulence DNS</title><link>https://taskin-ms.github.io/projects/turbulence/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://taskin-ms.github.io/projects/turbulence/</guid><description>High-order numerical simulation of compressible homogeneous isotropic turbulence.</description></item><item><title>Curriculum Vitae</title><link>https://taskin-ms.github.io/cv/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://taskin-ms.github.io/cv/</guid><description>&lt;h2 id="education"&gt;Education&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;PhD in Mechanical Engineering&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Texas A&amp;amp;M University&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;BS in Mechanical Engineering&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Bangladesh University of Engineering and Technology&lt;/p&gt;
+&lt;h2 id="research"&gt;Research&lt;/h2&gt;
+&lt;p&gt;Scientific Machine Learning and Computational Fluid Dynamics.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;A full CV will be added here.&lt;/em&gt;&lt;/p&gt;</description></item><item><title>Hypersonic Compressible Turbulence</title><link>https://taskin-ms.github.io/blog/hypersonic-compressible-turbulence/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://taskin-ms.github.io/blog/hypersonic-compressible-turbulence/</guid><description>A field guide to compressible turbulence.</description></item><item><title>Research</title><link>https://taskin-ms.github.io/research/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://taskin-ms.github.io/research/</guid><description>&lt;h2 id="research-interests"&gt;Research Interests&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Scientific machine learning for fluid dynamics&lt;/li&gt;
+&lt;li&gt;Compressible turbulence and numerical methods for PDEs&lt;/li&gt;
+&lt;li&gt;High-performance scientific computing&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>
