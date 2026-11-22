@@ -1,0 +1,579 @@
+
+/* Wider layout */
+.main {
+  max-width: 1100px;
+}
+
+/* Introduction */
+.hero-section {
+  padding: 85px 0 95px;
+}
+
+.eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  color: var(--secondary);
+}
+
+.hero-section h1 {
+  font-size: clamp(40px, 6vw, 66px);
+  font-weight: 750;
+  margin: 18px 0 22px;
+  letter-spacing: -2px;
+}
+
+.hero-description {
+  max-width: 680px;
+  font-size: 19px;
+  line-height: 1.75;
+  color: var(--secondary);
+}
+
+.hero-links {
+  display: flex;
+  gap: 20px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.hero-links a {
+  padding: 11px 20px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-weight: 500;
+  transition: 0.2s;
+}
+
+.hero-links a:hover {
+  background: var(--tertiary);
+}
+
+/* Featured work */
+.featured-section {
+  padding-bottom: 90px;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.section-heading h2 {
+  margin-top: 10px;
+  font-size: 30px;
+}
+
+.section-heading > a {
+  color: var(--secondary);
+  font-size: 14px;
+}
+
+/* Project cards */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.research-card {
+  display: block;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.research-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+}
+
+.project-image {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+div.project-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-image span {
+  color: white;
+  font-size: 13px;
+  letter-spacing: 3px;
+  font-weight: 600;
+}
+
+.art-capsule {
+  background: linear-gradient(135deg, #0c2338, #256e96, #64b9ba);
+}
+
+.art-turbulence {
+  background: linear-gradient(135deg, #181c46, #604a96, #d25a83);
+}
+
+.art-default {
+  background: linear-gradient(135deg, #283b4b, #6b8599);
+}
+
+.project-text {
+  padding: 24px;
+}
+
+.project-category {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--secondary);
+}
+
+.project-text h3 {
+  margin: 12px 0;
+  font-size: 22px;
+  line-height: 1.3;
+}
+
+.project-text > p:not(.project-category) {
+  color: var(--secondary);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.project-status {
+  display: inline-block;
+  margin-top: 18px;
+  font-size: 12px;
+  color: var(--secondary);
+}
+
+/* Mobile layout */
+@media (max-width: 700px) {
+  .hero-section {
+    padding: 50px 0 65px;
+  }
+
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section-heading {
+    align-items: start;
+  }
+}
+
+/* Sajeda-inspired typography */
+
+body, button, input, textarea {
+  font-family: system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Main introduction */
+.hero-section h1 {
+  font-size: clamp(38px, 5vw, 52px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* Introduction paragraph */
+.hero-description {
+  font-size: 16px;
+  line-height: 1.75;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* Section headings */
+.featured-section h2,
+.project-text h3 {
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+/* Navigation */
+.nav {
+  font-weight: 500;
+}
+
+
+
+
+body {
+  font-family: "Nunito", sans-serif;
+}
+
+.hero-section h1,
+.featured-section h2,
+.project-text h3 {
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+}
+
+/* Sajeda-inspired typography */
+
+body, button, input, textarea {
+  font-family: system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* Main introduction */
+.hero-section h1 {
+  font-size: clamp(38px, 5vw, 52px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* Introduction paragraph */
+.hero-description {
+  font-size: 16px;
+  line-height: 1.75;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* Section headings */
+.featured-section h2,
+.project-text h3 {
+  font-weight: 700;
+  letter-spacing: -0.015em;
+}
+
+/* Navigation */
+.nav {
+  font-weight: 500;
+}
+
+/* Nunito typography */
+body, button, input, textarea,
+.hero-section h1,
+.featured-section h2,
+.project-text h3 {
+  font-family: "Nunito", sans-serif;
+}
+
+.hero-section h1 {
+  font-weight: 800;
+}
+
+/* =========================================
+   Compact academic profile introduction
+   ========================================= */
+
+.hero-section {
+  padding: 35px 0 65px;
+}
+
+.intro-card {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 30px;
+}
+
+.intro-header {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+}
+
+.intro-photo {
+  width: 100px;
+  height: 115px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: var(--tertiary);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.intro-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.intro-photo span {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--primary);
+}
+
+.intro-card .intro-identity h1 {
+  font-family: "Nunito", sans-serif;
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  margin: 0 0 8px;
+}
+
+.intro-university {
+  font-size: 16px;
+  color: var(--secondary);
+  margin-bottom: 10px;
+}
+
+.intro-focus {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.intro-bio {
+  margin-top: 25px;
+  max-width: 850px;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--secondary);
+}
+
+.intro-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+}
+
+.intro-links a {
+  font-size: 14px;
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.intro-links a + a::before {
+  content: "|";
+  margin-right: 12px;
+  color: var(--secondary);
+}
+
+@media (max-width: 600px) {
+  .intro-card {
+    padding: 22px;
+  }
+
+  .intro-header {
+    align-items: flex-start;
+    gap: 14px;
+  }
+
+  .intro-photo {
+    width: 75px;
+    height: 90px;
+  }
+
+  .intro-card .intro-identity h1 {
+    font-size: 27px;
+  }
+}
+
+/* Scientific article styling */
+
+.post-content {
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.post-content h2 {
+  margin-top: 2.4em;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-content h3 {
+  margin-top: 1.8em;
+}
+
+.post-content img {
+  display: block;
+  margin: 24px auto;
+  max-height: 520px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.post-content p:has(> img) + p {
+  text-align: center;
+  font-size: 14px;
+  color: var(--secondary);
+}
+
+.post-content mjx-container[display="true"] {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 12px 0;
+}
+
+.post-content h2,
+.post-content h3 {
+  scroll-margin-top: 90px;
+}
+
+/* Single-page research portfolio */
+
+html {
+  scroll-behavior: smooth;
+}
+
+.stacked-section {
+  padding: 45px 0 65px;
+  scroll-margin-top: 90px;
+}
+
+.stacked-section + .stacked-section {
+  border-top: 1px solid var(--border);
+}
+
+.stacked-section .section-heading {
+  margin-bottom: 25px;
+}
+
+.stacked-section .section-heading h2 {
+  font-family: "Nunito", sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+/* Research */
+
+.research-copy {
+  max-width: 850px;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+.research-copy p {
+  color: var(--secondary);
+}
+
+/* Technical Blog */
+
+.blog-intro {
+  max-width: 850px;
+  margin-bottom: 28px;
+  color: var(--secondary);
+  line-height: 1.8;
+}
+
+.blog-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.blog-entry {
+  display: block;
+  padding: 25px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--entry);
+  transition: transform 0.2s ease;
+}
+
+.blog-entry:hover {
+  transform: translateY(-3px);
+}
+
+.blog-category {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  color: var(--secondary);
+  font-weight: 700;
+}
+
+.blog-entry h3 {
+  font-size: 21px;
+  font-weight: 800;
+  margin: 10px 0;
+}
+
+.blog-entry p {
+  color: var(--secondary);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.blog-read {
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* Mobile */
+
+@media (max-width: 700px) {
+  .stacked-section {
+    padding: 35px 0 45px;
+  }
+
+  .stacked-section .section-heading h2 {
+    font-size: 26px;
+  }
+}
+
+/* Compact Research Interests card */
+
+#research {
+  padding: 15px 0 35px;
+}
+
+/* Hide the redundant outer Research heading */
+#research > .section-heading {
+  display: none;
+}
+
+/* Card */
+#research .research-copy {
+  max-width: 100%;
+  padding: 20px 24px;
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+/* Heading */
+#research .research-copy h2 {
+  font-family: "Nunito", sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  margin: 0 0 12px;
+  padding: 0;
+  border: none;
+}
+
+/* Bullet list */
+#research .research-copy ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+#research .research-copy li {
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 4px 0;
+  color: var(--secondary);
+}
+
+@media (max-width: 600px) {
+  #research .research-copy {
+    padding: 18px;
+  }
+}

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="600" height="300" role="img" aria-labelledby="title desc">
+  <title id="title">Shock-wave and turbulent boundary-layer interaction</title>
+  <desc id="desc">A schematic incident shock meets an incoming turbulent boundary layer above a wall. A separated interaction region, reflected shock, and thicker downstream disturbed layer are labeled. Separation is a possible strong-interaction case, not a feature of every compressible boundary layer.</desc>
+  <defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0 0 6 3 0 6" fill="none" stroke="#48424d" stroke-width="1.3"/></marker></defs>
+  <rect width="600" height="300" rx="8" fill="#f0eaee"/>
+  <path d="M26 221C147 220 190 219 233 202S291 184 338 187 448 191 574 184L574 253H26Z" fill="#d5c0cd"/>
+  <g fill="none" stroke="#713e58" stroke-width="2"><path d="M28 239C190 239 214 232 247 215S299 203 345 208 470 211 574 205 M28 247C196 247 219 243 250 231S292 224 341 230 463 231 574 224"/><path d="M205 253C230 219 290 218 323 253" stroke-dasharray="5 4"/><path d="M258 244c-8-15 18-22 24-8 4 9-7 13-12 10"/></g>
+  <g fill="none" stroke="#48424d" stroke-width="3"><path d="M230 35 300 150 340 211"/><path d="M210 244 300 150 367 40"/><path d="M26 254H574"/></g>
+  <path d="M36 186H116" stroke="#48424d" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <g fill="none" stroke="#857882" stroke-width="1.5"><path d="M164 29H230 M422 63 353 64"/></g>
+  <g font-family="Arial,sans-serif" fill="#2a252f" font-size="22"><text x="28" y="27">Incident shock</text><text x="374" y="53">Reflected shock</text><text x="29" y="157">Incoming layer</text><text x="395" y="158">Disturbed layer</text><text x="199" y="283">Separation</text><text x="521" y="283">Wall</text></g>
+</svg>

@@ -1,0 +1,46 @@
+
+baseURL: "https://taskin-ms.github.io/"
+languageCode: "en-us"
+title: "Taskin Mehereen"
+theme: ["PaperMod"]
+
+params:
+  defaultTheme: auto
+
+  profileMode:
+    enabled: true
+    title: "Taskin Mehereen"
+    subtitle: "PhD Student | Scientific Machine Learning & Fluid Dynamics"
+
+  socialIcons:
+    - name: github
+      url: "https://github.com/taskin-ms"
+
+menu:
+  main:
+    - name: Home
+      url: /
+      weight: 10
+    - name: Research
+      url: /#research
+      weight: 20
+    - name: Projects
+      url: /#projects
+      weight: 30
+    - name: Technical Blog
+      url: /#technical-blog
+      weight: 35
+    - name: CV
+      url: /cv/
+      weight: 40
+
+markup:
+  goldmark:
+    extensions:
+      passthrough:
+        enable: true
+        delimiters:
+          block:
+            - ['$$', '$$']
+          inline:
+            - ['$', '$']

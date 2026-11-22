@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" width="600" height="300" role="img" aria-labelledby="title desc">
+  <title id="title">Two-stream mixing layer</title>
+  <desc id="desc">Two parallel streams with U1 greater than U2 meet at a splitter edge. The shear layer thickens downstream and contains increasingly large vortical structures. The splitter ends before the free shear region.</desc>
+  <defs><marker id="arrow" markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto"><path d="M0 0 6 3 0 6" fill="none" stroke="#48424d" stroke-width="1.3"/></marker></defs>
+  <rect width="600" height="300" rx="8" fill="#f0eaee"/>
+  <path d="M110 150 C230 144 403 101 566 70 L566 232 C403 197 230 157 110 150Z" fill="#d5c0cd"/>
+  <g fill="none" stroke="#713e58" stroke-width="2.5"><path d="M110 150 C230 144 403 101 566 70 M110 150 C230 157 403 197 566 232" stroke-dasharray="5 5"/><path d="M162 152c-6-22 28-28 30-6 1 18-24 20-22 5 M245 150c-16-34 36-45 41-13 6 30-33 37-35 12 M349 154c-20-48 55-62 65-15 8 42-50 51-53 17 M490 151c-32-64 65-91 83-30 18 58-66 78-70 29"/></g>
+  <path d="M28 150H110" stroke="#48424d" stroke-width="5"/>
+  <g stroke="#48424d" stroke-width="2.5" marker-end="url(#arrow)"><path d="M35 70H166 M35 231H104"/></g>
+  <g font-family="Arial,sans-serif" fill="#2a252f" font-size="25"><text x="42" y="54">U₁</text><text x="42" y="216">U₂</text><text x="261" y="51">Growing shear layer</text><text x="239" y="273">U₁ &gt; U₂</text></g>
+</svg>
