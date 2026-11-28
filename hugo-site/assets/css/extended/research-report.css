@@ -1,0 +1,43 @@
+/* Research report pages: responsive tables and equations */
+
+/* Tables scroll horizontally instead of overflowing on narrow screens */
+.post-content table {
+  display: block;
+  width: max-content;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.6em auto 0.6em;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.post-content table th {
+  background: var(--code-bg);
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.post-content table td {
+  white-space: nowrap;
+}
+
+/* Table caption: the italic paragraph directly after a table */
+.post-content table + p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--secondary);
+  margin-bottom: 1.8em;
+}
+
+/* Keep display and inline math inside the content column */
+.post-content mjx-container {
+  max-width: 100%;
+}
+
+.post-content mjx-container:not([display="true"]) {
+  display: inline-block;
+  overflow-x: auto;
+  overflow-y: hidden;
+  vertical-align: middle;
+}

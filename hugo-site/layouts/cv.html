@@ -1,0 +1,65 @@
+{{ define "main" }}
+{{ $p := .Params.profile }}
+<div class="cv-page">
+
+  <aside class="cv-sidebar" aria-label="Profile">
+    <div class="cv-photo">
+      {{ if fileExists "static/images/profile.jpg" }}
+        <img src="{{ "images/profile.jpg" | relURL }}" alt="Portrait of {{ $p.name }}">
+      {{ else }}
+        <span aria-hidden="true">TM</span>
+      {{ end }}
+    </div>
+
+    <h2 class="cv-name">{{ $p.name }}</h2>
+    <p class="cv-affiliation">
+      {{ $p.role }}<br>
+      {{ $p.department }}<br>
+      {{ $p.university }}
+    </p>
+
+    <ul class="cv-links">
+      {{ with $p.email }}
+        <li><span class="cv-link-label">Email</span><a href="mailto:{{ . }}">{{ . }}</a></li>
+      {{ end }}
+      {{ with $p.github }}
+        <li><span class="cv-link-label">GitHub</span><a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ strings.TrimPrefix "https://" . }}</a></li>
+      {{ end }}
+      {{ with $p.linkedin }}
+        <li><span class="cv-link-label">LinkedIn</span><a href="{{ . }}" target="_blank" rel="noopener noreferrer">{{ strings.TrimPrefix "https://www." . }}</a></li>
+      {{ end }}
+    </ul>
+
+    {{ with .Params.pdf }}
+      {{ if fileExists (printf "static/%s" .) }}
+        <a class="cv-download" href="{{ . | relURL }}" download>Download PDF</a>
+      {{ end }}
+    {{ end }}
+  </aside>
+
+  <article class="cv-content">
+    <h1 class="cv-title">{{ .Title }}</h1>
+
+    {{ range .Params.sections }}
+      <section class="cv-section">
+        <h2>{{ .heading }}</h2>
+        <ul class="cv-entries">
+          {{ range .entries }}
+            <li class="cv-entry">
+              <span class="cv-date">{{ .date }}</span>
+              <div class="cv-body">
+                <span class="cv-entry-title">{{ .title }}</span>
+                {{ with .org }}<span class="cv-org">{{ . }}</span>{{ end }}
+                {{ with .detail }}<span class="cv-detail">{{ . }}</span>{{ end }}
+              </div>
+            </li>
+          {{ end }}
+        </ul>
+      </section>
+    {{ end }}
+
+    {{ .Content }}
+  </article>
+
+</div>
+{{ end }}

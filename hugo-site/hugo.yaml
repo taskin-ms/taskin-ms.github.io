@@ -4,6 +4,10 @@ languageCode: "en-us"
 title: "Taskin Mehereen"
 theme: ["PaperMod"]
 
+# Source reports kept beside project pages are not published
+ignoreFiles:
+  - "_report\\.md$"
+
 params:
   defaultTheme: auto
 

@@ -343,6 +343,12 @@ body, button, input, textarea,
   color: var(--secondary);
 }
 
+.intro-bio a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
 .intro-links {
   display: flex;
   gap: 12px;

@@ -28,11 +28,14 @@
     </div>
 
     <p class="intro-bio">
-      I'm a Mechanical Engineering PhD student working
-      at the intersection of machine learning and
-      computational fluid dynamics. My research focuses
-      on data-driven modeling of unsteady compressible
-      flows, turbulence simulation, and scientific
+      I'm a PhD student in Mechanical Engineering at
+      Texas A&amp;M University, advised by
+      <a href="https://people.tamu.edu/~sji/"
+         target="_blank" rel="noopener noreferrer">Prof. Shuiwang Ji</a>.
+      My research explores how machine learning and
+      numerical methods can be used to model complex
+      fluid flows, with a particular interest in
+      compressible flows, turbulence, and scientific
       computing.
     </p>
 
@@ -79,15 +82,17 @@
 
         <a class="research-card" href="{{ .RelPermalink }}">
 
-          {{ with .Params.image }}
-            <img class="project-image"
-                 src="{{ . | relURL }}"
-                 alt="{{ $.Title }}">
-          {{ else }}
-            <div class="project-image art-{{ .Params.art | default "default" }}">
-              <span>{{ .Params.artLabel }}</span>
-            </div>
-          {{ end }}
+          {{/* Gradient panel stays behind the image as a fallback if the file is missing */}}
+          {{ $p := . }}
+          <div class="project-image art-{{ .Params.art | default "default" }}">
+            {{ with .Params.image }}
+              <img class="project-photo"
+                   src="{{ . | relURL }}"
+                   alt="{{ $p.Params.imageAlt | default $p.Title }}"
+                   loading="lazy" decoding="async"
+                   onerror="this.remove()">
+            {{ end }}
+          </div>
 
           <div class="project-text">
             <p class="project-category">{{ .Params.category }}</p>
