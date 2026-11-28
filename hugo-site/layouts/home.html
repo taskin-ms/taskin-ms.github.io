@@ -82,18 +82,6 @@
 
         <a class="research-card" href="{{ .RelPermalink }}">
 
-          {{/* Gradient panel stays behind the image as a fallback if the file is missing */}}
-          {{ $p := . }}
-          <div class="project-image art-{{ .Params.art | default "default" }}">
-            {{ with .Params.image }}
-              <img class="project-photo"
-                   src="{{ . | relURL }}"
-                   alt="{{ $p.Params.imageAlt | default $p.Title }}"
-                   loading="lazy" decoding="async"
-                   onerror="this.remove()">
-            {{ end }}
-          </div>
-
           <div class="project-text">
             <p class="project-category">{{ .Params.category }}</p>
             <h3>{{ .Title }}</h3>
